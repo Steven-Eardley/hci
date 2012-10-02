@@ -1,0 +1,54 @@
+package hci;
+
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+ 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.util.ArrayList;
+import hci.utils.Point;
+
+public class SaveObjects {
+	public void buildXML(ArrayList<ArrayList<Point>> objs){
+		int nodeLabel = 0;
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("imageLabels");
+			doc.appendChild(rootElement);
+			
+			for (ArrayList<Point> obj:objs){
+				Element objectNodes = doc.createElement("objectNodes");
+				rootElement.appendChild(objectNodes);
+				
+				for (hci.utils.Point point:obj){
+					Element nodePoint = doc.createElement("nodePoint");
+					nodePoint.appendChild(doc.createTextNode(Integer.toString(point.getX())));
+					nodePoint.appendChild(doc.createTextNode(Integer.toString(point.getY())));
+					objectNodes.appendChild(nodePoint);
+				}
+			}
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("/afs/inf.ed.ac.uk/user/s09/s0901522/test.xml"));
+			transformer.transform(source, result);
+			System.out.println("file saved");
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		  } catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		  }
+	}
+}

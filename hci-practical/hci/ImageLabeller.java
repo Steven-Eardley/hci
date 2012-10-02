@@ -16,9 +16,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.ObjectOutputStream;
+
 import hci.ImageFileFilter;
 import java.util.ArrayList;
 import hci.utils.Point;
+import hci.SaveObjects;
 
 /**
  * Main class of the program - handles display of the main window
@@ -47,6 +50,7 @@ public class ImageLabeller extends JFrame {
 	 * image panel - displays image and editing area
 	 */
 	ImagePanel imagePanel = null;
+	SaveObjects objectSaver = new SaveObjects();
 	
 	/**
 	 * handles New Object button action
@@ -131,6 +135,15 @@ public class ImageLabeller extends JFrame {
 		});
 		toolboxPanel.add(openFileButton);
 		
+		JButton saveButton = new JButton("Save");
+		saveButton.setEnabled(true);
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				objectSaver.buildXML(imagePanel.polygonsList);
+			}
+		});
+		toolboxPanel.add(saveButton);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		
