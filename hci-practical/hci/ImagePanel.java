@@ -1,6 +1,7 @@
 package hci;
 
 import javax.imageio.ImageIO;
+
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -15,7 +16,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import hci.utils.*;
-
+import hci.ImageFileFilter;
 /**
  * Handles image editing panel
  * @author Michal

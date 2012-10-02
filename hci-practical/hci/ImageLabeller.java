@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JFileChooser;
-
+import javax.swing.filechooser.FileFilter;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -102,7 +102,9 @@ public class ImageLabeller extends JFrame {
 		openFileButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ImageFileFilter filter = new ImageFileFilter();
 				JFileChooser imageChooser = new JFileChooser();
+				imageChooser.setFileFilter(filter);
 				int returnVal = imageChooser.showOpenDialog(appPanel);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
 			       System.out.println("You chose to open this file: " +
