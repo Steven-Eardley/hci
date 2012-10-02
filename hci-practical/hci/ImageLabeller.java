@@ -17,6 +17,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import hci.ImageFileFilter;
+import java.util.ArrayList;
+import hci.utils.Point;
 
 /**
  * Main class of the program - handles display of the main window
@@ -120,6 +122,7 @@ public class ImageLabeller extends JFrame {
 			    	try{
 			    		newImage = ImageIO.read(new File(imageName));
 			    		imagePanel.image = newImage;
+			    		imagePanel.polygonsList = new ArrayList<ArrayList<Point>>();
 			    	} catch (Exception a) {
 			    		a.printStackTrace();
 			    	}
