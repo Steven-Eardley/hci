@@ -42,7 +42,7 @@ public class SaveObjects {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("/afs/inf.ed.ac.uk/user/s09/s0901522/test.xml"));
+			StreamResult result = new StreamResult(new File("test.xml"));
 			transformer.transform(source, result);
 			System.out.println("file saved");
 		} catch (ParserConfigurationException pce) {
