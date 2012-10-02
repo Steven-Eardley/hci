@@ -84,7 +84,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	public void ShowImage() {
 		Graphics g = this.getGraphics();
-		
+		g.clearRect(0, 0, 800, 600);
 		if (image != null) {
 			g.drawImage(
 					image, 0, 0, null);
