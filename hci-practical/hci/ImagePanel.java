@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import hci.utils.*;
-import hci.ImageFileFilter;
+
 /**
  * Handles image editing panel
  * @author Michal
@@ -90,6 +90,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 					image, 0, 0, null);
 		}
 	}
+
 	
 	@Override
 	public void paint(Graphics g) {
@@ -179,6 +180,10 @@ public class ImagePanel extends JPanel implements MouseListener {
 			currentPolygon.add(new Point(x,y));
 			System.out.println(x + " " + y);
 		} 
+	}
+	
+	public void canYouSeeMe() {
+		System.out.println("cunt");
 	}
 
 	@Override

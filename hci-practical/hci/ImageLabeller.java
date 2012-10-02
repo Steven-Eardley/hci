@@ -1,5 +1,6 @@
 package hci;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 
 import javax.swing.JButton;
@@ -13,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import hci.ImageFileFilter;
 
 /**
  * Main class of the program - handles display of the main window
@@ -20,6 +24,8 @@ import java.awt.event.WindowEvent;
  *
  */
 public class ImageLabeller extends JFrame {
+	
+	BufferedImage newImage = null;
 	/**
 	 * some java stuff to get rid of warnings
 	 */
@@ -107,8 +113,16 @@ public class ImageLabeller extends JFrame {
 				imageChooser.setFileFilter(filter);
 				int returnVal = imageChooser.showOpenDialog(appPanel);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			       System.out.println("You chose to open this file: " +
+			    	System.out.println("You chose to open this file: " +
 			    		   imageChooser.getSelectedFile().getName());
+			    	String imageName = imageChooser.getSelectedFile().getAbsolutePath();
+			    	System.out.println(imageName);
+			    	try{
+			    		newImage = ImageIO.read(new File(imageName));
+			    		imagePanel.image = newImage;
+			    	} catch (Exception a) {
+			    		a.printStackTrace();
+			    	}
 			    }
 			}
 		});
