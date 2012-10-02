@@ -1,9 +1,11 @@
 package hci;
 
 import javax.swing.BoxLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JFileChooser;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -95,6 +97,21 @@ public class ImageLabeller extends JFrame {
 		
 		toolboxPanel.add(newPolyButton);
 		
+		JButton openFileButton = new JButton("Open Image");
+		openFileButton.setEnabled(true);
+		openFileButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser imageChooser = new JFileChooser();
+				int returnVal = imageChooser.showOpenDialog(appPanel);
+			    if(returnVal == JFileChooser.APPROVE_OPTION) {
+			       System.out.println("You chose to open this file: " +
+			    		   imageChooser.getSelectedFile().getName());
+			    }
+			}
+		});
+		toolboxPanel.add(openFileButton);
+		
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		
@@ -107,7 +124,7 @@ public class ImageLabeller extends JFrame {
 	 * Runs the program
 	 * @param argv path to an image
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		try {
 			//create a window and display the image
 			ImageLabeller window = new ImageLabeller();
