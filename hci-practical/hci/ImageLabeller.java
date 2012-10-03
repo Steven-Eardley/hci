@@ -157,6 +157,9 @@ public class ImageLabeller extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				imagePanel.polygonsList = objectReader.loadFile();
 				JOptionPane.showMessageDialog(null, "Session loaded");
+				for(String label:imagePanel.labelList){
+					System.out.println(label);
+				}
 			}
 		});
 		toolboxPanel.add(loadButton);

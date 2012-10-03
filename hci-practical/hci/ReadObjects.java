@@ -31,7 +31,8 @@ public class ReadObjects {
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Element obj = (Element) nList.item(temp);
-				links.add(obj.getAttribute("label"));
+				String labelText = obj.getAttribute("label");
+				links.add(labelText);
 				nodes = new ArrayList<hci.utils.Point>();
 				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
