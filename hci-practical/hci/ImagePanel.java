@@ -3,6 +3,7 @@ package hci;
 import javax.imageio.ImageIO;
 
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -43,12 +44,14 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	ArrayList<ArrayList<Point>> polygonsList = null;
 	
+	ArrayList<String> labelList = null;
 	/**
 	 * default constructor, sets up the window properties
 	 */
 	public ImagePanel() {
 		currentPolygon = new ArrayList<Point>();
 		polygonsList = new ArrayList<ArrayList<Point>>();
+		labelList = new ArrayList<String>();
 
 		this.setVisible(true);
 
@@ -142,6 +145,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 		}
 	}
 	
+	public void addLabel() {
+		String label = JOptionPane.showInputDialog("Please enter a label");
+		labelList.add(label);
+	}
+	
 	/**
 	 * moves current polygon to the list of polygons and makes pace for a new one
 	 */
@@ -182,10 +190,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 		} 
 	}
 	
-	public void canYouSeeMe() {
-		System.out.println("cunt");
-	}
-
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 	}

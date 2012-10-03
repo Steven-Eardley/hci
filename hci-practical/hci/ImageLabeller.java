@@ -82,7 +82,6 @@ public class ImageLabeller extends JFrame {
 		    	System.exit(0);
 		  	}
 		});
-
 		//setup main window panel
 		appPanel = new JPanel();
 		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
@@ -107,6 +106,7 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			    	addNewPolygon();
+			    	imagePanel.addLabel();
 			}
 		});
 		newPolyButton.setToolTipText("Click to add new object");
@@ -144,7 +144,7 @@ public class ImageLabeller extends JFrame {
 		saveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				objectSaver.buildXML(imagePanel.polygonsList);
+				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
 				JOptionPane.showMessageDialog(null, "Session saved");
 			}
 		});
