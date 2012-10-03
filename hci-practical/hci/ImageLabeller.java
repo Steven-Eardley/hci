@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import hci.utils.Point;
 import hci.SaveObjects;
 import hci.ReadObjects;
+import hci.XMLOutput;
 
 /**
  * Main class of the program - handles display of the main window
@@ -33,6 +34,7 @@ import hci.ReadObjects;
 public class ImageLabeller extends JFrame {
 	
 	BufferedImage newImage = null;
+	XMLOutput xOut = null;
 	/**
 	 * some java stuff to get rid of warnings
 	 */
@@ -155,11 +157,10 @@ public class ImageLabeller extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				imagePanel.polygonsList = objectReader.loadFile();
+				xOut = objectReader.loadFile();
+				imagePanel.polygonsList = xOut.getObjects();
+				imagePanel.labelList = xOut.getLabels();
 				JOptionPane.showMessageDialog(null, "Session loaded");
-				for(String label:imagePanel.labelList){
-					System.out.println(label);
-				}
 			}
 		});
 		toolboxPanel.add(loadButton);

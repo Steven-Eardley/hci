@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
 import hci.utils.Point;
+import hci.XMLOutput;
 
 public class ReadObjects {
 	ArrayList<ArrayList<hci.utils.Point>> objs = new ArrayList<ArrayList<hci.utils.Point>>();
@@ -17,14 +18,17 @@ public class ReadObjects {
 	Point p = null;
 	String x = new String();
 	String y = new String();
-	public ArrayList<ArrayList<hci.utils.Point>> loadFile() {
+	ImagePanel ip = new ImagePanel();
+	ArrayList<String> labels = new ArrayList<String>();
+	XMLOutput xOut = new XMLOutput();
+	public XMLOutput loadFile() {
 		try {
 			File fXmlFile = new File("/afs/inf.ed.ac.uk/user/s09/s0901522/hci/hci-practical/test.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
-			links = new ArrayList<String>();
+			
 			
 			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("objectNodes");
@@ -32,7 +36,7 @@ public class ReadObjects {
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Element obj = (Element) nList.item(temp);
 				String labelText = obj.getAttribute("label");
-				links.add(labelText);
+				labels.add(labelText);
 				nodes = new ArrayList<hci.utils.Point>();
 				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
@@ -50,11 +54,12 @@ public class ReadObjects {
 				}
 				objs.add(nodes);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return objs;
+		xOut.setLabels(labels);
+		xOut.setObjects(objs);
+		return xOut;
 	}
 	
 	private static String getTagValue(String sTag, Element eElement) {
