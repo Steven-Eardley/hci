@@ -22,6 +22,7 @@ import hci.ImageFileFilter;
 import java.util.ArrayList;
 import hci.utils.Point;
 import hci.SaveObjects;
+import hci.ReadObjects;
 
 /**
  * Main class of the program - handles display of the main window
@@ -51,6 +52,7 @@ public class ImageLabeller extends JFrame {
 	 */
 	ImagePanel imagePanel = null;
 	SaveObjects objectSaver = new SaveObjects();
+	ReadObjects objectReader = new ReadObjects();
 	
 	/**
 	 * handles New Object button action
@@ -144,6 +146,16 @@ public class ImageLabeller extends JFrame {
 			}
 		});
 		toolboxPanel.add(saveButton);
+		
+		JButton loadButton = new JButton("Load");
+		loadButton.setEnabled(true);
+		loadButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				objectReader.loadFile();
+			}
+		});
+		toolboxPanel.add(loadButton);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		

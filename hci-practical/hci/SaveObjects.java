@@ -34,8 +34,12 @@ public class SaveObjects {
 				
 				for (hci.utils.Point point:obj){
 					Element nodePoint = doc.createElement("nodePoint");
-					nodePoint.appendChild(doc.createTextNode(Integer.toString(point.getX())));
-					nodePoint.appendChild(doc.createTextNode(Integer.toString(point.getY())));
+					Element xPoint = doc.createElement("x");
+					xPoint.appendChild(doc.createTextNode(Integer.toString(point.getX())));
+					Element yPoint = doc.createElement("y");
+					yPoint.appendChild(doc.createTextNode(Integer.toString(point.getY())));
+					nodePoint.appendChild(xPoint);
+					nodePoint.appendChild(yPoint);
 					objectNodes.appendChild(nodePoint);
 				}
 			}
