@@ -23,16 +23,18 @@ public class ReadObjects {
 			NodeList nList = doc.getElementsByTagName("objectNodes");
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
+				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
+				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
+					Node nNode = nListTwo.item(tempNode);
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+						 
+						Element eElement = (Element) nNode;
 				 
-				Node nNode = nList.item(temp);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-		 
-				    Element eElement = (Element) nNode;
-		 
-				    System.out.println("X : " + getTagValue("x", eElement));
-				    System.out.println("Y : " + getTagValue("y", eElement));
-			        System.out.println("------------------------");
-		 
+						System.out.println("X: " + getTagValue("x", eElement));
+						System.out.println("Y: " + getTagValue("y", eElement));
+					    System.out.println("--------------------");
+				 
+					}
 				}
 			}
 		} catch (Exception e) {
