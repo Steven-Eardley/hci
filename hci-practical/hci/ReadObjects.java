@@ -13,6 +13,7 @@ import hci.utils.Point;
 public class ReadObjects {
 	ArrayList<ArrayList<hci.utils.Point>> objs = new ArrayList<ArrayList<hci.utils.Point>>();
 	ArrayList<hci.utils.Point> nodes = null;
+	ArrayList<String> links = null;
 	Point p = null;
 	String x = new String();
 	String y = new String();
@@ -23,11 +24,14 @@ public class ReadObjects {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
+			links = new ArrayList<String>();
 			
 			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("objectNodes");
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Element obj = (Element) nList.item(temp);
+				links.add(obj.getAttribute("label"));
 				nodes = new ArrayList<hci.utils.Point>();
 				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
