@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.JOptionPane;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -81,10 +82,9 @@ public class ImageLabeller extends JFrame {
 		    	System.exit(0);
 		  	}
 		});
-
 		//setup main window panel
 		appPanel = new JPanel();
-		this.setLayout(new BoxLayout(appPanel, BoxLayout.X_AXIS));
+		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
 		this.setContentPane(appPanel);
 		
         //Create and set up the image panel.
@@ -95,6 +95,7 @@ public class ImageLabeller extends JFrame {
 
         //create toolbox panel
         toolboxPanel = new JPanel();
+        toolboxPanel.setLayout(new BoxLayout(toolboxPanel, BoxLayout.LINE_AXIS));
         
         //Add button
 		JButton newPolyButton = new JButton("New object");
@@ -105,6 +106,7 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			    	addNewPolygon();
+			    	imagePanel.addLabel();
 			}
 		});
 		newPolyButton.setToolTipText("Click to add new object");
@@ -142,7 +144,8 @@ public class ImageLabeller extends JFrame {
 		saveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				objectSaver.buildXML(imagePanel.polygonsList);
+				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
+				JOptionPane.showMessageDialog(null, "Session saved");
 			}
 		});
 		toolboxPanel.add(saveButton);
@@ -153,6 +156,7 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				imagePanel.polygonsList = objectReader.loadFile();
+				JOptionPane.showMessageDialog(null, "Session loaded");
 			}
 		});
 		toolboxPanel.add(loadButton);

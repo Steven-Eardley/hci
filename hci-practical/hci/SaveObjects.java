@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import hci.utils.Point;
 
 public class SaveObjects {
-	public void buildXML(ArrayList<ArrayList<Point>> objs){
+	public void buildXML(ArrayList<ArrayList<hci.utils.Point>> objs, ArrayList<String> labels){
 		int nodeLabel = 0;
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -27,12 +27,15 @@ public class SaveObjects {
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("imageLabels");
 			doc.appendChild(rootElement);
+			Attr attr = doc.createAttribute("label");
 			
-			for (ArrayList<Point> obj:objs){
+			for (int i = 0; i < objs.size(); i++){
+				attr.setValue(labels.get(i));
 				Element objectNodes = doc.createElement("objectNodes");
+				objectNodes.setAttributeNode(attr);
 				rootElement.appendChild(objectNodes);
 				
-				for (hci.utils.Point point:obj){
+				for (hci.utils.Point point:objs.get(i)){
 					Element nodePoint = doc.createElement("nodePoint");
 					Element xPoint = doc.createElement("x");
 					xPoint.appendChild(doc.createTextNode(Integer.toString(point.getX())));
