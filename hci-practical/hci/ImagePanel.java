@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Paint;
+import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -139,6 +141,14 @@ public class ImagePanel extends JPanel implements MouseListener {
 			Graphics2D g = (Graphics2D)this.getGraphics();
 			g.setColor(Color.GREEN);
 			g.drawLine(firstVertex.getX(), firstVertex.getY(), lastVertex.getX(), lastVertex.getY());
+			
+			Polygon fillShape = new Polygon();
+			for (int i = 0; i < polygon.size(); i++){
+				Point vertex = polygon.get(i);
+				fillShape.addPoint(vertex.getX(), vertex.getY());
+			}
+			g.setColor(new Color(0,255,0,127));
+			g.fill(fillShape);
 		}
 	}
 	
@@ -172,6 +182,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			g.setColor(Color.GREEN);
 			if (currentPolygon.size() != 0) {
+				Point firstVertex = currentPolygon.get(0);
+				if (closeTo(x, firstVertex.getX(), 5) && closeTo(y, firstVertex.getY(), 5)){
+					addNewPolygon();
+					return;
+				}	
 				Point lastVertex = currentPolygon.get(currentPolygon.size() - 1);
 				g.drawLine(lastVertex.getX(), lastVertex.getY(), x, y);
 			}
@@ -184,6 +199,15 @@ public class ImagePanel extends JPanel implements MouseListener {
 	
 	public void canYouSeeMe() {
 		System.out.println("cunt");
+	}
+	
+	// return true if a is within range of b
+	public boolean closeTo(int a, int b,  int range){
+		if (a <= (b + range) && a >= (b - range)){
+			return true;
+		}else{
+			return false;	
+		}
 	}
 
 	@Override
