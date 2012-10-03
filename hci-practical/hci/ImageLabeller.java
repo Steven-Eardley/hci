@@ -152,7 +152,7 @@ public class ImageLabeller extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				objectReader.loadFile();
+				imagePanel.polygonsList = objectReader.loadFile();
 			}
 		});
 		toolboxPanel.add(loadButton);

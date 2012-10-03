@@ -11,7 +11,12 @@ import java.util.ArrayList;
 import hci.utils.Point;
 
 public class ReadObjects {
-	public void loadFile() {
+	ArrayList<ArrayList<hci.utils.Point>> objs = new ArrayList<ArrayList<hci.utils.Point>>();
+	ArrayList<hci.utils.Point> nodes = null;
+	Point p = null;
+	String x = new String();
+	String y = new String();
+	public ArrayList<ArrayList<hci.utils.Point>> loadFile() {
 		try {
 			File fXmlFile = new File("/afs/inf.ed.ac.uk/user/s09/s0901522/hci/hci-practical/test.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -23,6 +28,7 @@ public class ReadObjects {
 			NodeList nList = doc.getElementsByTagName("objectNodes");
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
+				nodes = new ArrayList<hci.utils.Point>();
 				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
 					Node nNode = nListTwo.item(tempNode);
@@ -30,16 +36,20 @@ public class ReadObjects {
 						 
 						Element eElement = (Element) nNode;
 				 
-						System.out.println("X: " + getTagValue("x", eElement));
-						System.out.println("Y: " + getTagValue("y", eElement));
-					    System.out.println("--------------------");
+						x = getTagValue("x", eElement);
+						y = getTagValue("y", eElement);
+						p = new hci.utils.Point(Integer.parseInt(x),Integer.parseInt(y));
+						nodes.add(p);
 				 
 					}
 				}
+				objs.add(nodes);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return objs;
 	}
 	
 	private static String getTagValue(String sTag, Element eElement) {
