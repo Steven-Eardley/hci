@@ -45,7 +45,6 @@ public class ImageLabeller extends JFrame {
 	 */
 	JPanel appPanel = null;
 	JPanel bigassPanel = null;
-	JPanel labelPanel = null;
 	/**
 	 * toolbox - put all buttons and stuff here!
 	 */
@@ -71,12 +70,6 @@ public class ImageLabeller extends JFrame {
 		imagePanel.paint(g); //update image panel
 	}
 	
-	public void drawLabels(ImagePanel ip) {
-		for(String label:ip.labelList){
-			JLabel l = new JLabel(label);
-			labelPanel.add(l);
-		}
-	}
 	
 	/**
 	 * sets up application window
@@ -99,8 +92,6 @@ public class ImageLabeller extends JFrame {
 		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
 		this.setContentPane(bigassPanel);
 		
-		labelPanel = new JPanel();
-		labelPanel.setOpaque(true);
 		
         //Create and set up the image panel.
 		imagePanel = new ImagePanel(imageFilename);
@@ -111,8 +102,7 @@ public class ImageLabeller extends JFrame {
         //create toolbox panel
         toolboxPanel = new JPanel();
         toolboxPanel.setLayout(new BoxLayout(toolboxPanel, BoxLayout.LINE_AXIS));
-       
-		
+        
 		JButton openFileButton = new JButton("Open Image");
 		openFileButton.setEnabled(true);
 		openFileButton.addActionListener(new ActionListener() {
@@ -158,7 +148,7 @@ public class ImageLabeller extends JFrame {
 				xOut = objectReader.loadFile();
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
-				drawLabels(imagePanel);
+				imagePanel.drawLabels();
 				JOptionPane.showMessageDialog(null, "Session loaded");
 			}
 		});
@@ -168,10 +158,7 @@ public class ImageLabeller extends JFrame {
 		
 		bigassPanel.add(appPanel);
 		
-		JLabel title = new JLabel("Labels:             ");
-		labelPanel.add(title);
-		
-		bigassPanel.add(labelPanel);
+		bigassPanel.add(imagePanel.labelPanel);
 		
 		//display all the stuff
 		this.pack();

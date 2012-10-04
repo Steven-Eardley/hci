@@ -2,6 +2,7 @@ package hci;
 
 import javax.imageio.ImageIO;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 
 import hci.utils.*;
 import hci.ImageLabeller;
@@ -37,6 +39,8 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	BufferedImage image = null;
 	
+	JPanel labelPanel = null;
+	
 	/**
 	 * list of current polygon's vertices 
 	 */
@@ -56,6 +60,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 		currentPolygon = new ArrayList<Point>();
 		polygonsList = new ArrayList<ArrayList<Point>>();
 		labelList = new ArrayList<String>();
+		labelPanel = new JPanel();
+		labelPanel.setOpaque(true);
+		labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.PAGE_AXIS));
+		JLabel title = new JLabel("Labels:             ");
+		labelPanel.add(title);
+		
 
 		this.setVisible(true);
 
@@ -89,6 +99,18 @@ public class ImagePanel extends JPanel implements MouseListener {
 	/**
 	 * Displays the image
 	 */
+	public void drawLabels() {
+		labelPanel.removeAll();
+		JLabel l = new JLabel("Labels:             ");
+		labelPanel.add(l);
+		for(String label:labelList){
+			l = new JLabel(label);
+			labelPanel.add(l);
+			labelPanel.revalidate();
+	        labelPanel.repaint();
+		}
+	}
+	
 	public void ShowImage() {
 		Graphics g = this.getGraphics();
 		g.clearRect(0, 0, 800, 600);
@@ -162,6 +184,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	public void addLabel() {
 		String label = JOptionPane.showInputDialog("Please enter a label");
 		labelList.add(label);
+		drawLabels();
 	}
 	
 	/**
