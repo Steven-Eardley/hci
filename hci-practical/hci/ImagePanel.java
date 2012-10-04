@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Paint;
 import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -46,6 +45,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	ArrayList<ArrayList<Point>> polygonsList = null;
 	
+	/**
+	 * List of Polygons, done properly.
+	 */
+	ArrayList<Polygon> actualPolygonList = null;
+	
 	ArrayList<String> labelList = null;
 	/**
 	 * default constructor, sets up the window properties
@@ -53,6 +57,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	public ImagePanel() {
 		currentPolygon = new ArrayList<Point>();
 		polygonsList = new ArrayList<ArrayList<Point>>();
+		actualPolygonList = new ArrayList<Polygon>();
 		labelList = new ArrayList<String>();
 
 		this.setVisible(true);
@@ -150,6 +155,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 				Point vertex = polygon.get(i);
 				fillShape.addPoint(vertex.getX(), vertex.getY());
 			}
+			actualPolygonList.add(fillShape);
 			g.setColor(new Color(0,255,0,127));
 			g.fill(fillShape);
 		}
@@ -178,7 +184,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		int x = e.getX();
 		int y = e.getY();
 		
-		//check if the cursos withing image area
+		//check if the cursor's within image area
 		if (x > image.getWidth() || y > image.getHeight()) {
 			//if not do nothing
 			return;
@@ -186,7 +192,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		
 		Graphics2D g = (Graphics2D)this.getGraphics();
 		
-		//if the left button than we will add a vertex to poly
+		//if the left button than we will add a vertex to polygon
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			g.setColor(Color.GREEN);
 			if (currentPolygon.size() != 0) {
@@ -203,6 +209,14 @@ public class ImagePanel extends JPanel implements MouseListener {
 			currentPolygon.add(new Point(x,y));
 			System.out.println(x + " " + y);
 		} 
+		// a right-click in a polygon adds a label
+		if (e.getButton() == MouseEvent.BUTTON3){
+			for (Polygon p : actualPolygonList){
+				if (p.contains(x, y)){
+					addLabel();
+				}
+			}
+		}
 	}
 
 	// return true if a is within range of b
