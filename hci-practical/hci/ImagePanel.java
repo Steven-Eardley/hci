@@ -18,6 +18,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import hci.utils.*;
+import hci.ImageLabeller;
 
 /**
  * Handles image editing panel
@@ -51,6 +52,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	ArrayList<Polygon> actualPolygonList = null;
 	
 	ArrayList<String> labelList = null;
+	
 	/**
 	 * default constructor, sets up the window properties
 	 */
@@ -106,7 +108,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		
-		//display iamge
+		//display image
 		ShowImage();
 		
 		//display all the completed polygons
@@ -145,6 +147,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		if (polygon.size() >= 3) {
 			Point firstVertex = polygon.get(0);
 			Point lastVertex = polygon.get(polygon.size() - 1);
+			
 		
 			Graphics2D g = (Graphics2D)this.getGraphics();
 			g.setColor(Color.GREEN);
@@ -199,6 +202,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 				Point firstVertex = currentPolygon.get(0);
 				if (closeTo(x, firstVertex.getX(), 5) && closeTo(y, firstVertex.getY(), 5)){
 					addNewPolygon();
+					addLabel();
 					return;
 				}	
 				Point lastVertex = currentPolygon.get(currentPolygon.size() - 1);

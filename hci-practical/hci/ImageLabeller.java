@@ -2,7 +2,7 @@ package hci;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
-
+import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -44,7 +44,8 @@ public class ImageLabeller extends JFrame {
 	 * main window panel
 	 */
 	JPanel appPanel = null;
-	
+	JPanel bigassPanel = null;
+	JPanel labelPanel = null;
 	/**
 	 * toolbox - put all buttons and stuff here!
 	 */
@@ -70,6 +71,13 @@ public class ImageLabeller extends JFrame {
 		imagePanel.paint(g); //update image panel
 	}
 	
+	public void drawLabels(ImagePanel ip) {
+		for(String label:ip.labelList){
+			JLabel l = new JLabel(label);
+			labelPanel.add(l);
+		}
+	}
+	
 	/**
 	 * sets up application window
 	 * @param imageFilename image to be loaded for editing
@@ -85,9 +93,14 @@ public class ImageLabeller extends JFrame {
 		  	}
 		});
 		//setup main window panel
+		bigassPanel = new JPanel();
+		bigassPanel.setLayout(new BoxLayout(bigassPanel, BoxLayout.LINE_AXIS));
 		appPanel = new JPanel();
 		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
-		this.setContentPane(appPanel);
+		this.setContentPane(bigassPanel);
+		
+		labelPanel = new JPanel();
+		labelPanel.setOpaque(true);
 		
         //Create and set up the image panel.
 		imagePanel = new ImagePanel(imageFilename);
@@ -98,22 +111,7 @@ public class ImageLabeller extends JFrame {
         //create toolbox panel
         toolboxPanel = new JPanel();
         toolboxPanel.setLayout(new BoxLayout(toolboxPanel, BoxLayout.LINE_AXIS));
-        
-        //Add button
-		JButton newPolyButton = new JButton("New object");
-		newPolyButton.setMnemonic(KeyEvent.VK_N);
-		newPolyButton.setSize(50, 20);
-		newPolyButton.setEnabled(true);
-		newPolyButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			    	addNewPolygon();
-			    	imagePanel.addLabel();
-			}
-		});
-		newPolyButton.setToolTipText("Click to add new object");
-		
-		toolboxPanel.add(newPolyButton);
+       
 		
 		JButton openFileButton = new JButton("Open Image");
 		openFileButton.setEnabled(true);
@@ -160,12 +158,20 @@ public class ImageLabeller extends JFrame {
 				xOut = objectReader.loadFile();
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
+				drawLabels(imagePanel);
 				JOptionPane.showMessageDialog(null, "Session loaded");
 			}
 		});
 		toolboxPanel.add(loadButton);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
+		
+		bigassPanel.add(appPanel);
+		
+		JLabel title = new JLabel("Labels:             ");
+		labelPanel.add(title);
+		
+		bigassPanel.add(labelPanel);
 		
 		//display all the stuff
 		this.pack();
