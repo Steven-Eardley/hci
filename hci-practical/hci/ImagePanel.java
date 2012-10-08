@@ -132,7 +132,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		
 		//display image
 		ShowImage();
-		
+		actualPolygonList.clear();
 		//display all the completed polygons
 		for(ArrayList<Point> polygon : polygonsList) {
 			drawPolygon(polygon);
@@ -186,9 +186,13 @@ public class ImagePanel extends JPanel implements MouseListener {
 		}
 	}
 	
-	public void addLabel() {
+	public void addLabel(int index) {
 		String label = JOptionPane.showInputDialog("Please enter a label");
-		labelList.add(label);
+		if (index < labelList.size()){
+			labelList.set(index, label);
+		} else {
+			labelList.add(label);
+		}
 		drawLabels();
 	}
 	
@@ -225,7 +229,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 				Point firstVertex = currentPolygon.get(0);
 				if (closeTo(x, firstVertex.getX(), 5) && closeTo(y, firstVertex.getY(), 5)){
 					addNewPolygon();
-					addLabel();
 					return;
 				}	
 				Point lastVertex = currentPolygon.get(currentPolygon.size() - 1);
@@ -240,7 +243,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		if (e.getButton() == MouseEvent.BUTTON3){
 			for (Polygon p : actualPolygonList){
 				if (p.contains(x, y)){
-					addLabel();
+					addLabel(actualPolygonList.indexOf(p));
 				}
 			}
 		}
