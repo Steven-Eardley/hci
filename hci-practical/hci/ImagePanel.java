@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +15,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -62,6 +64,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 	ArrayList<String> labelList = null;
 	JList labelsBox = null;
 	
+	JButton edit = null;
+	JButton delete = null;
+	
 	/**
 	 * default constructor, sets up the window properties
 	 */
@@ -77,6 +82,20 @@ public class ImagePanel extends JPanel implements MouseListener {
 		labelPanel.add(title,BorderLayout.NORTH);
 		labelsBox = new JList(labelList.toArray());
 		labelPanel.add(labelsBox, BorderLayout.CENTER);
+		JPanel buttonBox = new JPanel();
+		buttonBox.setLayout(new BoxLayout(buttonBox, BoxLayout.LINE_AXIS));
+		edit = new JButton("Edit");
+		delete = new JButton("Delete");
+		edit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editLabel();
+			}
+		});
+		buttonBox.add(edit);
+		buttonBox.add(delete);
+		labelPanel.add(buttonBox, BorderLayout.SOUTH);
+		
 		labelPanel.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		
 
@@ -112,6 +131,14 @@ public class ImagePanel extends JPanel implements MouseListener {
 	/**
 	 * Displays the image
 	 */
+	
+	public void editLabel(){
+		int position = labelsBox.getSelectedIndex();
+		String label = JOptionPane.showInputDialog("Please enter a new label");
+		labelList.set(position, label);
+		drawLabels();
+	}
+	
 	public void drawLabels() {
 		labelsBox.setListData(labelList.toArray());
 	}
