@@ -4,8 +4,11 @@ import javax.imageio.ImageIO;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -18,7 +21,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JLabel;
-
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
 import hci.utils.*;
 import hci.ImageLabeller;
 
@@ -56,6 +60,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	ArrayList<Polygon> actualPolygonList = null;
 	
 	ArrayList<String> labelList = null;
+	JList labelsBox = null;
 	
 	/**
 	 * default constructor, sets up the window properties
@@ -67,9 +72,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 		labelList = new ArrayList<String>();
 		labelPanel = new JPanel();
 		labelPanel.setOpaque(true);
-		labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.PAGE_AXIS));
+		labelPanel.setLayout(new BorderLayout());
 		JLabel title = new JLabel("Labels:             ");
-		labelPanel.add(title);
+		labelPanel.add(title,BorderLayout.NORTH);
+		labelsBox = new JList(labelList.toArray());
+		labelPanel.add(labelsBox, BorderLayout.CENTER);
+		labelPanel.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		
 
 		this.setVisible(true);
@@ -105,15 +113,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * Displays the image
 	 */
 	public void drawLabels() {
-		labelPanel.removeAll();
-		JLabel l = new JLabel("Labels:             ");
-		labelPanel.add(l);
-		for(String label:labelList){
-			l = new JLabel(label);
-			labelPanel.add(l);
-			labelPanel.revalidate();
-	        labelPanel.repaint();
-		}
+		labelsBox.setListData(labelList.toArray());
 	}
 	
 	public void ShowImage() {
