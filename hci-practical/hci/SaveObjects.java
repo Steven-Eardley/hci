@@ -23,13 +23,15 @@ public class SaveObjects {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			
+			System.out.println(Integer.toString(objs.size()));
+			System.out.println(Integer.toString(labels.size()));
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("imageLabels");
 			doc.appendChild(rootElement);
-			Attr attr = doc.createAttribute("label");
+			
 			
 			for (int i = 0; i < objs.size(); i++){
+				Attr attr = doc.createAttribute("label");
 				attr.setValue(labels.get(i));
 				Element objectNodes = doc.createElement("objectNodes");
 				objectNodes.setAttributeNode(attr);
