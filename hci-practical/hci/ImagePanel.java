@@ -214,10 +214,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void addLabel(int index) {
-		String label = JOptionPane.showInputDialog("Please enter a label");
-		if (index < labelList.size()){
+		String label = null;
+		if ((index < labelList.size()) && (index >= 0)){
+			label = JOptionPane.showInputDialog("Please enter a new label");
 			labelList.set(index, label);
 		} else {
+			label = JOptionPane.showInputDialog("Please enter a label");
 			labelList.add(label);
 		}
 		drawLabels();
@@ -256,6 +258,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 				Point firstVertex = currentPolygon.get(0);
 				if (closeTo(x, firstVertex.getX(), 5) && closeTo(y, firstVertex.getY(), 5)){
 					addNewPolygon();
+					addLabel(-1);
 					return;
 				}	
 				Point lastVertex = currentPolygon.get(currentPolygon.size() - 1);
