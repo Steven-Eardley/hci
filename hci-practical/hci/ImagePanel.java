@@ -86,6 +86,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 		buttonBox.setLayout(new BoxLayout(buttonBox, BoxLayout.LINE_AXIS));
 		edit = new JButton("Edit");
 		delete = new JButton("Delete");
+		delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				deleteLabel();
+			}
+		});
 		edit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -132,12 +138,28 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * Displays the image
 	 */
 	
+	public void deleteLabel(){
+		if (labelList.size() > 0){
+			int position = labelsBox.getSelectedIndex();
+			labelList.remove(position);
+			actualPolygonList.remove(position);
+			polygonsList.remove(position);
+			drawLabels();
+			ShowImage();
+			for (ArrayList<Point> shape : polygonsList){
+				drawPolygon(shape);
+				finishPolygon(shape);
+			}
+		}
+	}
+	
 	public void editLabel(){
 		int position = labelsBox.getSelectedIndex();
 		String label = JOptionPane.showInputDialog("Please enter a new label");
 		labelList.set(position, label);
 		drawLabels();
 	}
+	
 	
 	public void drawLabels() {
 		labelsBox.setListData(labelList.toArray());
