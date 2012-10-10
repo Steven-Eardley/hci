@@ -293,9 +293,10 @@ public class ImagePanel extends JPanel implements MouseListener {
 		} 
 		// a right-click in a polygon adds a label
 		if (e.getButton() == MouseEvent.BUTTON3){
-			for (Polygon p : actualPolygonList){
-				if (p.contains(x, y)){
-					addLabel(actualPolygonList.indexOf(p));
+			for (int i = (actualPolygonList.size() -1); i >= 0; i--){
+				if (actualPolygonList.get(i).contains(x, y)){
+					addLabel(i);
+					break;
 				}
 			}
 		}
