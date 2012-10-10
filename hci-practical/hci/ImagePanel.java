@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -68,6 +70,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 	JButton delete = null;
 	
 	/**
+	 * The polygon currently selected by the user
+	 */
+	int selectedPolygon = -1;
+	
+	/**
 	 * default constructor, sets up the window properties
 	 */
 	public ImagePanel() {
@@ -80,7 +87,16 @@ public class ImagePanel extends JPanel implements MouseListener {
 		labelPanel.setLayout(new BorderLayout());
 		JLabel title = new JLabel("Labels:             ");
 		labelPanel.add(title,BorderLayout.NORTH);
+		
 		labelsBox = new JList(labelList.toArray());
+		labelsBox.addListSelectionListener(new ListSelectionListener(){
+			@Override
+			public void valueChanged(ListSelectionEvent e){
+				selectedPolygon = labelsBox.getSelectedIndex();
+				refresh();
+			}
+		});
+		
 		labelPanel.add(labelsBox, BorderLayout.CENTER);
 		JPanel buttonBox = new JPanel();
 		buttonBox.setLayout(new BoxLayout(buttonBox, BoxLayout.LINE_AXIS));
@@ -104,7 +120,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 		
 		labelPanel.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		
-
 		this.setVisible(true);
 
 		Dimension panelSize = new Dimension(800, 600);
@@ -139,17 +154,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	
 	public void deleteLabel(){
-		if (labelList.size() > 0){
-			int position = labelsBox.getSelectedIndex();
-			labelList.remove(position);
-			actualPolygonList.remove(position);
-			polygonsList.remove(position);
+		if (labelList.size() > 0 && selectedPolygon >=0){
+			labelList.remove(selectedPolygon);
+			actualPolygonList.remove(selectedPolygon);
+			polygonsList.remove(selectedPolygon);
 			drawLabels();
-			ShowImage();
-			for (ArrayList<Point> shape : polygonsList){
-				drawPolygon(shape);
-				finishPolygon(shape);
-			}
+			refresh();
 		}
 	}
 	
@@ -174,6 +184,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 		}
 	}
 
+	public void refresh(){
+		paint(this.getGraphics());
+	}
 	
 	@Override
 	public void paint(Graphics g) {
@@ -219,7 +232,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 			Point firstVertex = polygon.get(0);
 			Point lastVertex = polygon.get(polygon.size() - 1);
 			
-		
 			Graphics2D g = (Graphics2D)this.getGraphics();
 			g.setColor(Color.GREEN);
 			g.drawLine(firstVertex.getX(), firstVertex.getY(), lastVertex.getX(), lastVertex.getY());
@@ -229,8 +241,12 @@ public class ImagePanel extends JPanel implements MouseListener {
 				Point vertex = polygon.get(i);
 				fillShape.addPoint(vertex.getX(), vertex.getY());
 			}
+			if (actualPolygonList.size() == selectedPolygon){
+				g.setColor(new Color(100,100,255,127));
+			} else{
+				g.setColor(new Color(0,255,0,127));
+			}
 			actualPolygonList.add(fillShape);
-			g.setColor(new Color(0,255,0,127));
 			g.fill(fillShape);
 		}
 	}
@@ -295,6 +311,8 @@ public class ImagePanel extends JPanel implements MouseListener {
 		if (e.getButton() == MouseEvent.BUTTON3){
 			for (int i = (actualPolygonList.size() -1); i >= 0; i--){
 				if (actualPolygonList.get(i).contains(x, y)){
+					//selectedPolygon = i;
+					labelsBox.setSelectedIndex(i);
 					addLabel(i);
 					break;
 				}
