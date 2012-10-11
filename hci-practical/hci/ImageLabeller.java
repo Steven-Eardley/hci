@@ -77,14 +77,6 @@ public class ImageLabeller extends JFrame {
 	 * @throws Exception
 	 */
 	public void setupGUI(String imageFilename) throws Exception {
-		this.addWindowListener(new WindowAdapter() {
-		  	public void windowClosing(WindowEvent event) {
-		  		//here we exit the program (maybe we should ask if the user really wants to do it?)
-		  		//maybe we also want to store the polygons somewhere? and read them next time
-		  		System.out.println("Bye bye!");
-		    	System.exit(0);
-		  	}
-		});
 		//setup main window panel
 		bigassPanel = new JPanel();
 		bigassPanel.setLayout(new BoxLayout(bigassPanel, BoxLayout.LINE_AXIS));
@@ -95,6 +87,20 @@ public class ImageLabeller extends JFrame {
 		
         //Create and set up the image panel.
 		imagePanel = new ImagePanel(imageFilename);
+		this.addWindowListener(new WindowAdapter() {
+		  	public void windowClosing(WindowEvent event) {
+		  		//here we exit the program (maybe we should ask if the user really wants to do it?)
+		  		//maybe we also want to store the polygons somewhere? and read them next time
+		  		if (imagePanel.edited){
+		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing.");
+		  			if (response == JOptionPane.YES_OPTION){
+		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
+		  			}
+		  		}
+		  		System.out.println("Bye bye!");
+		    	System.exit(0);
+		  	}
+		});
 		imagePanel.setOpaque(true); //content panes must be opaque
 		
         appPanel.add(imagePanel);
@@ -136,6 +142,7 @@ public class ImageLabeller extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
 				JOptionPane.showMessageDialog(null, "Session saved");
+				imagePanel.edited = false;
 			}
 		});
 		toolboxPanel.add(saveButton);

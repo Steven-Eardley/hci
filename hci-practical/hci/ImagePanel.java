@@ -40,6 +40,8 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * some java stuff to get rid of warnings
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	Boolean edited = false;
 
 	/**
 	 * image to be tagged
@@ -154,6 +156,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	
 	public void deleteLabel(){
+		edited = true;
 		if (labelList.size() > 0 && selectedPolygon >=0){
 			labelList.remove(selectedPolygon);
 			actualPolygonList.remove(selectedPolygon);
@@ -164,6 +167,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void editLabel(){
+		edited = true;
 		int position = labelsBox.getSelectedIndex();
 		String label = JOptionPane.showInputDialog("Please enter a new label");
 		labelList.set(position, label);
@@ -252,6 +256,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void addLabel(int index) {
+		edited = true;
 		String label = null;
 		if ((index < labelList.size()) && (index >= 0)){
 			label = JOptionPane.showInputDialog("Please enter a new label");
@@ -267,6 +272,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * moves current polygon to the list of polygons and makes pace for a new one
 	 */
 	public void addNewPolygon() {
+		edited = true;
 		//finish the current polygon if any
 		if (currentPolygon != null ) {
 			finishPolygon(currentPolygon);
