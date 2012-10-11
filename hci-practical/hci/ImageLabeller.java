@@ -83,7 +83,7 @@ public class ImageLabeller extends JFrame {
 		appPanel = new JPanel();
 		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
 		this.setContentPane(bigassPanel);
-		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
         //Create and set up the image panel.
 		imagePanel = new ImagePanel(imageFilename);
@@ -95,10 +95,12 @@ public class ImageLabeller extends JFrame {
 		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing.");
 		  			if (response == JOptionPane.YES_OPTION){
 		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
+		  				System.exit(0);
+		  			} else if (response == JOptionPane.NO_OPTION) {
+		  				System.exit(0);
 		  			}
 		  		}
-		  		System.out.println("Bye bye!");
-		    	System.exit(0);
+		    	
 		  	}
 		});
 		imagePanel.setOpaque(true); //content panes must be opaque
