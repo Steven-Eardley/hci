@@ -18,7 +18,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.ObjectOutputStream;
-
+import javax.swing.ImageIcon;
 import hci.ImageFileFilter;
 import java.util.ArrayList;
 import hci.utils.Point;
@@ -99,11 +99,9 @@ public class ImageLabeller extends JFrame {
 		  				System.exit(0);
 		  			} else if (response == JOptionPane.NO_OPTION) {
 		  				System.exit(0);
-		  			} else if (response == JOptionPane.CANCEL_OPTION) {
-		  				
-		  			} else {
-		  				System.exit(0);
 		  			}
+		  		} else {
+		  			System.exit(0);
 		  		}
 		    	
 		  	}
@@ -116,7 +114,12 @@ public class ImageLabeller extends JFrame {
         toolboxPanel = new JPanel();
         toolboxPanel.setLayout(new BoxLayout(toolboxPanel, BoxLayout.LINE_AXIS));
         
-		JButton openFileButton = new JButton("Open Image");
+        ImageIcon open_icon = new ImageIcon("open.gif");
+        ImageIcon save_icon = new ImageIcon("save.gif");
+        ImageIcon image_icon = new ImageIcon("image.gif");
+        
+		JButton openFileButton = new JButton();
+		openFileButton.setIcon(image_icon);
 		openFileButton.setEnabled(true);
 		openFileButton.addActionListener(new ActionListener() {
 			@Override
@@ -141,7 +144,8 @@ public class ImageLabeller extends JFrame {
 		});
 		toolboxPanel.add(openFileButton);
 		
-		JButton saveButton = new JButton("Save");
+		JButton saveButton = new JButton();
+		saveButton.setIcon(save_icon);
 		saveButton.setEnabled(true);
 		saveButton.addActionListener(new ActionListener() {
 			@Override
@@ -153,7 +157,8 @@ public class ImageLabeller extends JFrame {
 		});
 		toolboxPanel.add(saveButton);
 		
-		JButton loadButton = new JButton("Load");
+		JButton loadButton = new JButton();
+		loadButton.setIcon(open_icon);
 		loadButton.setEnabled(true);
 		loadButton.addActionListener(new ActionListener() {
 			@Override

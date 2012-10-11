@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -98,12 +99,16 @@ public class ImagePanel extends JPanel implements MouseListener {
 				refresh();
 			}
 		});
-		
+        ImageIcon edit_icon = new ImageIcon("edit.gif");
+        ImageIcon delete_icon = new ImageIcon("delete.gif");
+        
 		labelPanel.add(labelsBox, BorderLayout.CENTER);
 		JPanel buttonBox = new JPanel();
 		buttonBox.setLayout(new BoxLayout(buttonBox, BoxLayout.LINE_AXIS));
-		edit = new JButton("Edit");
-		delete = new JButton("Delete");
+		edit = new JButton();
+		edit.setIcon(edit_icon);
+		delete = new JButton();
+		delete.setIcon(delete_icon);
 		delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
