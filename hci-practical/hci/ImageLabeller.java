@@ -35,6 +35,7 @@ public class ImageLabeller extends JFrame {
 	
 	BufferedImage newImage = null;
 	XMLOutput xOut = null;
+	String imageName = "./images/U1003_0000.jpg";
 	/**
 	 * some java stuff to get rid of warnings
 	 */
@@ -94,9 +95,13 @@ public class ImageLabeller extends JFrame {
 		  		if (imagePanel.edited){
 		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing.");
 		  			if (response == JOptionPane.YES_OPTION){
-		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
+		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
 		  				System.exit(0);
 		  			} else if (response == JOptionPane.NO_OPTION) {
+		  				System.exit(0);
+		  			} else if (response == JOptionPane.CANCEL_OPTION) {
+		  				
+		  			} else {
 		  				System.exit(0);
 		  			}
 		  		}
@@ -123,8 +128,7 @@ public class ImageLabeller extends JFrame {
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
 			    	System.out.println("You chose to open this file: " +
 			    		   imageChooser.getSelectedFile().getName());
-			    	String imageName = imageChooser.getSelectedFile().getAbsolutePath();
-			    	System.out.println(imageName);
+			    	imageName = imageChooser.getSelectedFile().getAbsolutePath();
 			    	try{
 			    		newImage = ImageIO.read(new File(imageName));
 			    		imagePanel.image = newImage;
@@ -142,7 +146,7 @@ public class ImageLabeller extends JFrame {
 		saveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList);
+				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
 				JOptionPane.showMessageDialog(null, "Session saved");
 				imagePanel.edited = false;
 			}
@@ -154,7 +158,7 @@ public class ImageLabeller extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				xOut = objectReader.loadFile();
+				xOut = objectReader.loadFile(imageName);
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
 				imagePanel.drawLabels();

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import hci.utils.Point;
 
 public class SaveObjects {
-	public void buildXML(ArrayList<ArrayList<hci.utils.Point>> objs, ArrayList<String> labels){
+	public void buildXML(ArrayList<ArrayList<hci.utils.Point>> objs, ArrayList<String> labels, String path){
 		int nodeLabel = 0;
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -51,7 +51,7 @@ public class SaveObjects {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("test.xml"));
+			StreamResult result = new StreamResult(new File(path + ".xml"));
 			transformer.transform(source, result);
 			System.out.println("file saved");
 		} catch (ParserConfigurationException pce) {

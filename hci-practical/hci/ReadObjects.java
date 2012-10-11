@@ -21,16 +21,14 @@ public class ReadObjects {
 	ImagePanel ip = new ImagePanel();
 	ArrayList<String> labels = new ArrayList<String>();
 	XMLOutput xOut = new XMLOutput();
-	public XMLOutput loadFile() {
+	public XMLOutput loadFile(String path) {
 		try {
-			File fXmlFile = new File("/afs/inf.ed.ac.uk/user/s09/s0901522/hci/hci-practical/test.xml");
+			File fXmlFile = new File(path + ".xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 			
-			
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("objectNodes");
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
