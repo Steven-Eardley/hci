@@ -99,8 +99,8 @@ public class ImagePanel extends JPanel implements MouseListener {
 				refresh();
 			}
 		});
-        ImageIcon edit_icon = new ImageIcon("edit.gif");
-        ImageIcon delete_icon = new ImageIcon("delete.gif");
+        ImageIcon edit_icon = new ImageIcon("icons/edit.gif");
+        ImageIcon delete_icon = new ImageIcon("icons/delete.gif");
         
 		labelPanel.add(labelsBox, BorderLayout.CENTER);
 		JPanel buttonBox = new JPanel();

@@ -114,9 +114,10 @@ public class ImageLabeller extends JFrame {
         toolboxPanel = new JPanel();
         toolboxPanel.setLayout(new BoxLayout(toolboxPanel, BoxLayout.LINE_AXIS));
         
-        ImageIcon open_icon = new ImageIcon("open.gif");
-        ImageIcon save_icon = new ImageIcon("save.gif");
-        ImageIcon image_icon = new ImageIcon("image.gif");
+        ImageIcon open_icon = new ImageIcon("icons/open.gif");
+        ImageIcon save_icon = new ImageIcon("icons/save.gif");
+        ImageIcon image_icon = new ImageIcon("icons/image.gif");
+        ImageIcon help_icon = new ImageIcon("icons/help.gif");
         
 		JButton openFileButton = new JButton();
 		openFileButton.setIcon(image_icon);
@@ -171,6 +172,24 @@ public class ImageLabeller extends JFrame {
 			}
 		});
 		toolboxPanel.add(loadButton);
+		
+		JButton helpButton = new JButton();
+		helpButton.setIcon(help_icon);
+		helpButton.setEnabled(true);
+		helpButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e){
+				try{
+					String url = "file:///afs/inf.ed.ac.uk/user/s09/s0901522/hci/hci-practical/help/help.html";
+					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+				} catch (Exception b){
+					
+				}
+			}
+		});
+		
+		
+		toolboxPanel.add(helpButton);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		
