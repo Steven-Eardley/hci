@@ -91,7 +91,7 @@ public class ImageLabeller extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
 		  	public void windowClosing(WindowEvent event) {
 		  		//we exit the program, ask if the user really wants to do it
-		  		if (imagePanel.edited){
+		  		if (imagePanel.polygonsList.size() > 0){
 		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing?");
 		  			if (response == JOptionPane.YES_OPTION){
 		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
@@ -156,7 +156,6 @@ public class ImageLabeller extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
 				JOptionPane.showMessageDialog(null, "Session saved");
-				imagePanel.edited = false;
 			}
 		});
 		toolboxPanel.add(saveButton);
