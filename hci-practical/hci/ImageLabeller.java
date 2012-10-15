@@ -118,6 +118,8 @@ public class ImageLabeller extends JFrame {
         ImageIcon save_icon = new ImageIcon("icons/save.gif");
         ImageIcon image_icon = new ImageIcon("icons/image.gif");
         ImageIcon help_icon = new ImageIcon("icons/help.gif");
+        ImageIcon edit_icon = new ImageIcon("icons/edit.gif");
+        ImageIcon delete_icon = new ImageIcon("icons/delete.gif");
         
 		JButton openFileButton = new JButton();
 		openFileButton.setIcon(image_icon);
@@ -188,8 +190,29 @@ public class ImageLabeller extends JFrame {
 			}
 		});
 		
+		JButton edit = new JButton();
+		edit.setIcon(edit_icon);
+		JButton delete = new JButton();
+		delete.setIcon(delete_icon);
+		delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imagePanel.deleteLabel();
+			}
+		});
+		edit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imagePanel.editLabel();
+			}
+		});
+		
+		
 		
 		toolboxPanel.add(helpButton);
+		
+		toolboxPanel.add(edit);
+		toolboxPanel.add(delete);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		
