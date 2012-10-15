@@ -240,7 +240,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 		edited = true;
 		String label = null;
 		if ((index < labelList.size()) && (index >= 0)){
-			label = JOptionPane.showInputDialog("Please enter a new label");
+			label = JOptionPane.showInputDialog("Edit label",labelList.get(index));
 			labelList.set(index, label);
 		} else {
 			label = JOptionPane.showInputDialog("Please enter a label");
