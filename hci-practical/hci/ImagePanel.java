@@ -328,6 +328,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 					break;
 				}
 			}
+			// right-click while drawing to remove lines
+			if (currentPolygon.size() > 0){
+				currentPolygon.remove(currentPolygon.size() - 1);
+				refresh();
+			}
 		}
 	}
 
