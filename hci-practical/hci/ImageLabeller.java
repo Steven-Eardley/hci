@@ -90,10 +90,9 @@ public class ImageLabeller extends JFrame {
 		imagePanel = new ImagePanel(imageFilename);
 		this.addWindowListener(new WindowAdapter() {
 		  	public void windowClosing(WindowEvent event) {
-		  		//here we exit the program (maybe we should ask if the user really wants to do it?)
-		  		//maybe we also want to store the polygons somewhere? and read them next time
+		  		//we exit the program, ask if the user really wants to do it
 		  		if (imagePanel.edited){
-		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing.");
+		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing?");
 		  			if (response == JOptionPane.YES_OPTION){
 		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
 		  				System.exit(0);
