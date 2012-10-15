@@ -2,14 +2,11 @@ package hci;
 
 import javax.imageio.ImageIO;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,19 +14,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JLabel;
-import java.awt.FlowLayout;
-import java.awt.event.MouseAdapter;
 import hci.utils.*;
-import hci.ImageLabeller;
 
 /**
  * Handles image editing panel
@@ -41,8 +32,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * some java stuff to get rid of warnings
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	Boolean edited = false;
 
 	/**
 	 * image to be tagged
@@ -66,11 +55,11 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 */
 	ArrayList<Polygon> actualPolygonList = null;
 	
+	/**
+	 * UI components
+	 */
 	ArrayList<String> labelList = null;
 	JList labelsBox = null;
-	
-	JButton edit = null;
-	JButton delete = null;
 	
 	/**
 	 * The polygon currently selected by the user
@@ -134,7 +123,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void deleteLabel(){
-		edited = true;
 		if (labelList.size() > 0 && selectedPolygon >=0){
 			labelList.remove(selectedPolygon);
 			actualPolygonList.remove(selectedPolygon);
@@ -145,11 +133,8 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void editLabel(){
-		edited = true;
 		int position = labelsBox.getSelectedIndex();
-		String label = JOptionPane.showInputDialog("Please enter a new label");
-		labelList.set(position, label);
-		drawLabels();
+		addLabel(position);
 	}
 	
 	
@@ -237,7 +222,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	public void addLabel(int index) {
-		edited = true;
 		String label = null;
 		if ((index < labelList.size()) && (index >= 0)){
 			label = JOptionPane.showInputDialog("Edit label",labelList.get(index));
@@ -253,7 +237,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 	 * moves current polygon to the list of polygons and makes pace for a new one
 	 */
 	public void addNewPolygon() {
-		edited = true;
 		//finish the current polygon if any
 		if (currentPolygon != null ) {
 			finishPolygon(currentPolygon);
