@@ -18,7 +18,6 @@ public class ReadObjects {
 	Point p = null;
 	String x = new String();
 	String y = new String();
-	ImagePanel ip = new ImagePanel();
 	ArrayList<String> labels = new ArrayList<String>();
 	XMLOutput xOut = new XMLOutput();
 	public XMLOutput loadFile(String path) {
@@ -35,6 +34,7 @@ public class ReadObjects {
 				Element obj = (Element) nList.item(temp);
 				String labelText = obj.getAttribute("label");
 				labels.add(labelText);
+				System.out.println(labels);
 				nodes = new ArrayList<hci.utils.Point>();
 				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){

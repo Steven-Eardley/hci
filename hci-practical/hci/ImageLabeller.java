@@ -56,7 +56,6 @@ public class ImageLabeller extends JFrame {
 	 */
 	ImagePanel imagePanel = null;
 	SaveObjects objectSaver = new SaveObjects();
-	ReadObjects objectReader = new ReadObjects();
 	
 	/**
 	 * handles New Object button action
@@ -169,6 +168,7 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(imageName);
+				ReadObjects objectReader = new ReadObjects();
 				xOut = objectReader.loadFile(imageName);
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
