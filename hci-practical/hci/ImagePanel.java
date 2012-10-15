@@ -99,33 +99,10 @@ public class ImagePanel extends JPanel implements MouseListener {
 				refresh();
 			}
 		});
-        ImageIcon edit_icon = new ImageIcon("icons/edit.gif");
-        ImageIcon delete_icon = new ImageIcon("icons/delete.gif");
         
 		labelPanel.add(labelsBox, BorderLayout.CENTER);
-		JPanel buttonBox = new JPanel();
-		buttonBox.setLayout(new BoxLayout(buttonBox, BoxLayout.LINE_AXIS));
-		edit = new JButton();
-		edit.setIcon(edit_icon);
-		delete = new JButton();
-		delete.setIcon(delete_icon);
-		delete.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				deleteLabel();
-			}
-		});
-		edit.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				editLabel();
-			}
-		});
-		buttonBox.add(edit);
-		buttonBox.add(delete);
-		labelPanel.add(buttonBox, BorderLayout.SOUTH);
-		
-		labelPanel.setBorder(new EmptyBorder(10, 10, 10, 10) );
+		//buttonBox.setBorder(new EmptyBorder(50, 0, 0, 0) );
+
 		
 		this.setVisible(true);
 
