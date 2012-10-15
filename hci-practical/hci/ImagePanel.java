@@ -132,10 +132,6 @@ public class ImagePanel extends JPanel implements MouseListener {
 			image.getGraphics().drawImage(scaledImage, 0, 0, this);
 		}
 	}
-
-	/**
-	 * Displays the image
-	 */
 	
 	public void deleteLabel(){
 		edited = true;
@@ -161,6 +157,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 		labelsBox.setListData(labelList.toArray());
 	}
 	
+	/**
+	 * Displays the image
+	 */
 	public void ShowImage() {
 		Graphics g = this.getGraphics();
 		g.clearRect(0, 0, 800, 600);
@@ -337,5 +336,4 @@ public class ImagePanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
 }

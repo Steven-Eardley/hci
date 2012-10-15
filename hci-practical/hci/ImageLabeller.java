@@ -122,6 +122,7 @@ public class ImageLabeller extends JFrame {
         
 		JButton openFileButton = new JButton();
 		openFileButton.setIcon(image_icon);
+		openFileButton.setToolTipText("Open Image");
 		openFileButton.setEnabled(true);
 		openFileButton.addActionListener(new ActionListener() {
 			@Override
@@ -148,6 +149,7 @@ public class ImageLabeller extends JFrame {
 		
 		JButton saveButton = new JButton();
 		saveButton.setIcon(save_icon);
+		saveButton.setToolTipText("Save");
 		saveButton.setEnabled(true);
 		saveButton.addActionListener(new ActionListener() {
 			@Override
@@ -161,6 +163,7 @@ public class ImageLabeller extends JFrame {
 		
 		JButton loadButton = new JButton();
 		loadButton.setIcon(open_icon);
+		loadButton.setToolTipText("Load");
 		loadButton.setEnabled(true);
 		loadButton.addActionListener(new ActionListener() {
 			@Override
@@ -176,6 +179,7 @@ public class ImageLabeller extends JFrame {
 		
 		JButton helpButton = new JButton();
 		helpButton.setIcon(help_icon);
+		helpButton.setToolTipText("Help");
 		helpButton.setEnabled(true);
 		helpButton.addActionListener(new ActionListener() {
 			@Override
@@ -189,34 +193,34 @@ public class ImageLabeller extends JFrame {
 			}
 		});
 		
-		JButton edit = new JButton();
-		edit.setIcon(edit_icon);
-		JButton delete = new JButton();
-		delete.setIcon(delete_icon);
-		delete.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				imagePanel.deleteLabel();
-			}
-		});
-		edit.addActionListener(new ActionListener() {
+		JButton editButton = new JButton();
+		editButton.setIcon(edit_icon);
+		editButton.setToolTipText("Edit Label");
+		editButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				imagePanel.editLabel();
 			}
 		});
 		
-		
-		
+		JButton deleteButton = new JButton();
+		deleteButton.setIcon(delete_icon);
+		deleteButton.setToolTipText("Delete Shape");
+		deleteButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imagePanel.deleteLabel();
+			}
+		});
+
 		toolboxPanel.add(helpButton);
+		toolboxPanel.add(editButton);
+		toolboxPanel.add(deleteButton);
 		
-		toolboxPanel.add(edit);
-		toolboxPanel.add(delete);
 		//add toolbox to window
 		appPanel.add(toolboxPanel);
 		
-		bigassPanel.add(appPanel);
-		
+		bigassPanel.add(appPanel);		
 		bigassPanel.add(imagePanel.labelPanel);
 		
 		//display all the stuff
