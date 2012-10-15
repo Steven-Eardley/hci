@@ -168,6 +168,7 @@ public class ImageLabeller extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(imageName);
 				xOut = objectReader.loadFile(imageName);
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
