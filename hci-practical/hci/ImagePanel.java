@@ -225,30 +225,18 @@ public class ImagePanel extends JPanel implements MouseListener {
 		String label = null;
 		if ((index < labelList.size()) && (index >= 0)){
 			label = JOptionPane.showInputDialog("Edit label",labelList.get(index));
-			if (label != null){
-				while (label.length() == 0) {
-					if (label.length() == 0) {
-						label = JOptionPane.showInputDialog("Edit label",labelList.get(index));
-					}
-				}
-				labelList.set(index, label);
+			if (label == null){
+				return;
 			}
+			if (label.length() == 0){
+				addLabel(index);
+			}
+			labelList.set(index, label);
 		} else {
 			label = JOptionPane.showInputDialog("Please enter a label");
-			if (label != null){
-				while (label.length() == 0) {
-					if (label.length() == 0) {
-						label = JOptionPane.showInputDialog("Please enter a label");
-					}
-				}
-			} else {
-				while (label == null) {
-					if (label == null) {
-						label = JOptionPane.showInputDialog("Please enter a label");
-					}
-				}
+			if ((label == null) || (label.length() == 0)){
+				addLabel(-1);
 			}
-			
 			labelList.add(label);
 		}
 		drawLabels();
