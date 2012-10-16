@@ -163,12 +163,17 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(imageName);
+				File f = new File(imageName+".xml");
 				ReadObjects objectReader = new ReadObjects();
-				xOut = objectReader.loadFile(imageName);
-				imagePanel.polygonsList = xOut.getObjects();
-				imagePanel.labelList = xOut.getLabels();
-				imagePanel.drawLabels();
-				JOptionPane.showMessageDialog(null, "Session loaded");
+				if (f.exists()){
+					xOut = objectReader.loadFile(imageName);
+					imagePanel.polygonsList = xOut.getObjects();
+					imagePanel.labelList = xOut.getLabels();
+					imagePanel.drawLabels();
+					JOptionPane.showMessageDialog(null, "Session loaded");
+				} else {
+					JOptionPane.showMessageDialog(null, "Nothing to load");
+				}
 			}
 		});
 		toolboxPanel.add(loadButton);
