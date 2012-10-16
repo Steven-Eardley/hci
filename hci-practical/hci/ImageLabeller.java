@@ -165,7 +165,7 @@ public class ImageLabeller extends JFrame {
 				System.out.println(imageName);
 				File f = new File(imageName+".xml");
 				ReadObjects objectReader = new ReadObjects();
-				if (f.exists()){
+				if (f.isFile()){
 					xOut = objectReader.loadFile(imageName);
 					imagePanel.polygonsList = xOut.getObjects();
 					imagePanel.labelList = xOut.getLabels();
