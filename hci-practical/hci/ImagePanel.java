@@ -230,8 +230,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 			}
 			if (label.length() == 0){
 				addLabel(index);
+			} else {
+				labelList.set(index, label);
 			}
-			labelList.set(index, label);
 		} else {
 			label = JOptionPane.showInputDialog("Please enter a label");
 			if ((label == null) || (label.length() == 0)){
