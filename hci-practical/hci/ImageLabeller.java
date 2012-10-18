@@ -134,6 +134,8 @@ public class ImageLabeller extends JFrame {
 			    		newImage = ImageIO.read(new File(imageName));
 			    		imagePanel.image = newImage;
 			    		imagePanel.polygonsList = new ArrayList<ArrayList<Point>>();
+			    		imagePanel.labelList = new ArrayList<String>();
+			    		imagePanel.drawLabels();
 			    	} catch (Exception a) {
 			    		a.printStackTrace();
 			    	}
@@ -169,6 +171,7 @@ public class ImageLabeller extends JFrame {
 					xOut = objectReader.loadFile(imageName);
 					imagePanel.polygonsList = xOut.getObjects();
 					imagePanel.labelList = xOut.getLabels();
+					System.out.println(imagePanel.labelList);
 					imagePanel.drawLabels();
 					JOptionPane.showMessageDialog(null, "Session loaded");
 				} else {
