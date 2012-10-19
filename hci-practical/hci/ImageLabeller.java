@@ -240,6 +240,7 @@ public class ImageLabeller extends JFrame {
 		try {
 			//create a window and display the image
 			ImageLabeller window = new ImageLabeller();
+			window.setTitle("L'Blür");
 			window.setupGUI(argv[0]);
 		} catch (Exception e) {
 			System.err.println("Image: " + argv[0]);
