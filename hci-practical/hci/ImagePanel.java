@@ -134,7 +134,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 	
 	public void editLabel(){
 		int position = labelsBox.getSelectedIndex();
-		addLabel(position);
+		if (position >= 0){
+			addLabel(position);
+		}
 	}
 	
 	
