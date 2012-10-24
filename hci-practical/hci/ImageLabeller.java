@@ -1,15 +1,24 @@
 package hci;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.BoxLayout;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
+import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -75,6 +84,93 @@ public class ImageLabeller extends JFrame {
 	 * @param imageFilename image to be loaded for editing
 	 * @throws Exception
 	 */
+	
+	@SuppressWarnings("serial")
+	public Action openAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+	    	ImageFileFilter filter = new ImageFileFilter();
+			JFileChooser imageChooser = new JFileChooser();
+			imageChooser.setFileFilter(filter);
+			int returnVal = imageChooser.showOpenDialog(appPanel);
+		    if(returnVal == JFileChooser.APPROVE_OPTION) {
+		    	System.out.println("You chose to open this file: " +
+		    		   imageChooser.getSelectedFile().getName());
+		    	imageName = imageChooser.getSelectedFile().getAbsolutePath();
+		    	try{
+		    		newImage = ImageIO.read(new File(imageName));
+		    		imagePanel.image = newImage;
+		    		imagePanel.polygonsList = new ArrayList<ArrayList<Point>>();
+		    		imagePanel.labelList = new ArrayList<String>();
+		    		imagePanel.drawLabels();
+		    	} catch (Exception a) {
+		    		a.printStackTrace();
+		    	}
+		    }
+	    }
+	};
+	
+	@SuppressWarnings("serial")
+	public Action saveAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+			objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
+			JOptionPane.showMessageDialog(null, "Session saved");
+			ImageLabeller.saved = true;
+	    }
+	};
+
+	@SuppressWarnings("serial")
+	public Action loadAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+	    	System.out.println(imageName);
+			File f = new File(imageName+".xml");
+			ReadObjects objectReader = new ReadObjects();
+			if (f.isFile()){
+				xOut = objectReader.loadFile(imageName);
+				imagePanel.polygonsList = xOut.getObjects();
+				imagePanel.labelList = xOut.getLabels();
+				System.out.println(imagePanel.labelList);
+				imagePanel.drawLabels();
+				JOptionPane.showMessageDialog(null, "Session loaded");
+			} else {
+				JOptionPane.showMessageDialog(null, "Nothing to load");
+			}
+	    }
+	};
+	
+	@SuppressWarnings("serial")
+	public Action helpAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+	    	try{
+				String url = "http://steven-eardley.github.com/hci/";
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+			} catch (Exception b){
+				b.printStackTrace();
+			}
+	    }
+	};
+	
+	@SuppressWarnings("serial")
+	public Action editAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+	    	imagePanel.editLabel();
+	    }
+	};
+	
+	@SuppressWarnings("serial")
+	public Action deleteAction = new AbstractAction() {
+	    public void actionPerformed(ActionEvent e) {
+	    	imagePanel.deleteLabel();
+	    }
+	};
+	
+	@SuppressWarnings("serial")
+	public Action navAction = new AbstractAction() {
+		public void actionPerformed(ActionEvent e) {
+			imagePanel.labelsBox.setSelectedIndex(0);
+			imagePanel.labelsBox.grabFocus();
+		}
+	};
+	
 	public void setupGUI(String imageFilename) throws Exception {
 		//setup main window panel
 		bigassPanel = new JPanel();
@@ -83,6 +179,7 @@ public class ImageLabeller extends JFrame {
 		appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.PAGE_AXIS));
 		this.setContentPane(bigassPanel);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addBindings();
 		
         //Create and set up the image panel.
 		imagePanel = new ImagePanel(imageFilename);
@@ -100,7 +197,6 @@ public class ImageLabeller extends JFrame {
 		  		} else {
 		  			System.exit(0);
 		  		}
-		    	
 		  	}
 		});
 		imagePanel.setOpaque(true); //content panes must be opaque
@@ -118,108 +214,36 @@ public class ImageLabeller extends JFrame {
         ImageIcon edit_icon = new ImageIcon("icons/edit.gif");
         ImageIcon delete_icon = new ImageIcon("icons/delete.gif");
         
-		JButton openFileButton = new JButton();
+		JButton openFileButton = new JButton(openAction);
 		openFileButton.setIcon(image_icon);
-		openFileButton.setToolTipText("Open Image");
+		openFileButton.setToolTipText("Open Image (Ctrl+o");
 		openFileButton.setEnabled(true);
-		openFileButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ImageFileFilter filter = new ImageFileFilter();
-				JFileChooser imageChooser = new JFileChooser();
-				imageChooser.setFileFilter(filter);
-				int returnVal = imageChooser.showOpenDialog(appPanel);
-			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			    	System.out.println("You chose to open this file: " +
-			    		   imageChooser.getSelectedFile().getName());
-			    	imageName = imageChooser.getSelectedFile().getAbsolutePath();
-			    	try{
-			    		newImage = ImageIO.read(new File(imageName));
-			    		imagePanel.image = newImage;
-			    		imagePanel.polygonsList = new ArrayList<ArrayList<Point>>();
-			    		imagePanel.labelList = new ArrayList<String>();
-			    		imagePanel.drawLabels();
-			    	} catch (Exception a) {
-			    		a.printStackTrace();
-			    	}
-			    }
-			}
-		});
 		toolboxPanel.add(openFileButton);
 		
-		JButton saveButton = new JButton();
+		JButton saveButton = new JButton(saveAction);
 		saveButton.setIcon(save_icon);
-		saveButton.setToolTipText("Save");
+		saveButton.setToolTipText("Save (Ctrl+s)");
 		saveButton.setEnabled(true);
-		saveButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
-				JOptionPane.showMessageDialog(null, "Session saved");
-				ImageLabeller.saved = true;
-			}
-		});
 		toolboxPanel.add(saveButton);
 		
-		JButton loadButton = new JButton();
+		JButton loadButton = new JButton(loadAction);
 		loadButton.setIcon(open_icon);
-		loadButton.setToolTipText("Load");
+		loadButton.setToolTipText("Load (Ctrl+l)");
 		loadButton.setEnabled(true);
-		loadButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(imageName);
-				File f = new File(imageName+".xml");
-				ReadObjects objectReader = new ReadObjects();
-				if (f.isFile()){
-					xOut = objectReader.loadFile(imageName);
-					imagePanel.polygonsList = xOut.getObjects();
-					imagePanel.labelList = xOut.getLabels();
-					System.out.println(imagePanel.labelList);
-					imagePanel.drawLabels();
-					JOptionPane.showMessageDialog(null, "Session loaded");
-				} else {
-					JOptionPane.showMessageDialog(null, "Nothing to load");
-				}
-			}
-		});
 		toolboxPanel.add(loadButton);
 		
-		JButton helpButton = new JButton();
+		JButton helpButton = new JButton(helpAction);
 		helpButton.setIcon(help_icon);
-		helpButton.setToolTipText("Help");
+		helpButton.setToolTipText("Help (Ctrl+h)");
 		helpButton.setEnabled(true);
-		helpButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e){
-				try{
-					String url = "http://steven-eardley.github.com/hci/";
-					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-				} catch (Exception b){
-					
-				}
-			}
-		});
 		
-		JButton editButton = new JButton();
+		JButton editButton = new JButton(editAction);
 		editButton.setIcon(edit_icon);
-		editButton.setToolTipText("Edit Label");
-		editButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				imagePanel.editLabel();
-			}
-		});
+		editButton.setToolTipText("Edit Label (Ctrl+e)");
 		
-		JButton deleteButton = new JButton();
+		JButton deleteButton = new JButton(deleteAction);
 		deleteButton.setIcon(delete_icon);
-		deleteButton.setToolTipText("Delete Shape");
-		deleteButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				imagePanel.deleteLabel();
-			}
-		});
+		deleteButton.setToolTipText("Delete Shape (Del)");
 
 		toolboxPanel.add(helpButton);
 		toolboxPanel.add(editButton);
@@ -250,5 +274,38 @@ public class ImageLabeller extends JFrame {
 			System.err.println("Image: " + argv[0]);
 			e.printStackTrace();
 		}
+	}
+	
+	protected void addBindings(){
+		InputMap inputMap = bigassPanel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+		ActionMap actionMap = bigassPanel.getActionMap();
+		
+		KeyStroke key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "open");
+        actionMap.put("save", openAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "save");
+        actionMap.put("save", saveAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "load");
+        actionMap.put("load", loadAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "help");
+        actionMap.put("help", helpAction);
+		
+		key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "edit");
+        actionMap.put("edit", editAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0);
+        inputMap.put(key, "delete");
+        actionMap.put("delete", deleteAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_RIGHT, 0);
+        inputMap.put(key, "rightNav");
+        actionMap.put("rightNav", navAction);
 	}
 }
