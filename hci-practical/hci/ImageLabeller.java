@@ -24,7 +24,7 @@ import hci.XMLOutput;
 
 /**
  * Main class of the program - handles display of the main window
- * @author Michal
+ * @author Michal, James Hulme, Steven Eardley
  *
  */
 public class ImageLabeller extends JFrame {
@@ -66,7 +66,10 @@ public class ImageLabeller extends JFrame {
 		imagePanel.paint(g); //update image panel
 	}
 	
-	
+	/**
+	 * Tracks whether the session has been saved
+	 */
+	public static boolean saved = false;
 	/**
 	 * sets up application window
 	 * @param imageFilename image to be loaded for editing
@@ -86,7 +89,7 @@ public class ImageLabeller extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
 		  	public void windowClosing(WindowEvent event) {
 		  		//we exit the program, ask if the user really wants to do it
-		  		if (imagePanel.polygonsList.size() > 0){
+		  		if ((imagePanel.polygonsList.size() > 0) && (!saved)){
 		  			int response = JOptionPane.showConfirmDialog(null, "You have unsaved changes.  Would you like to save before closing?");
 		  			if (response == JOptionPane.YES_OPTION){
 		  				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
@@ -153,6 +156,7 @@ public class ImageLabeller extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				objectSaver.buildXML(imagePanel.polygonsList, imagePanel.labelList, imageName);
 				JOptionPane.showMessageDialog(null, "Session saved");
+				ImageLabeller.saved = true;
 			}
 		});
 		toolboxPanel.add(saveButton);

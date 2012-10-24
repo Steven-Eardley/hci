@@ -243,6 +243,9 @@ public class ImagePanel extends JPanel implements MouseListener {
 			labelList.add(label);
 		}
 		drawLabels();
+		
+		// changes to labels mean unsaved changes
+		ImageLabeller.saved = false;
 	}
 	
 	/**
@@ -280,13 +283,16 @@ public class ImagePanel extends JPanel implements MouseListener {
 					addNewPolygon();
 					addLabel(-1);
 					return;
-				}	
+				}
 				Point lastVertex = currentPolygon.get(currentPolygon.size() - 1);
 				g.drawLine(lastVertex.getX(), lastVertex.getY(), x, y);
 			}
 			g.fillOval(x-5,y-5,10,10);
 			
 			currentPolygon.add(new Point(x,y));
+			
+			// clicks mean unsaved changes
+			ImageLabeller.saved = false;
 			System.out.println(x + " " + y);
 		} 
 		// a right-click in a polygon adds a label
