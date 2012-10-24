@@ -36,7 +36,11 @@ We feel that this was an effective design discipline that let us build up a soli
 
 \subsection{Good}
 
-\subsubsection{XML}
+\subsubsection{Saving and Loading}
+We made the decision that marked points and labels would be stored in an XML file.  This is because XML is good for storing structured data which is what we have.  It also means it is in a semi standard format which would hopefully make it easier if any other labelling software wanted to be used, for example LabelMe which also has xml capability.  This is less a benefit to the user and more a benefit any researchers who want to access the data.
+
+Another decision we made was to not give the user much control over saving and loading.  When you save after doing some marking and labelling the xml file is created in the same directory as the image with the name \emph{imagefilename}.xml.  Then when you press load after opening a new image the relevant file is automatically loaded.
+
 \subsubsection{Keyboard Shortcuts}
 \subsubsection{Marking Objects}
 \subsubsection{Undo}

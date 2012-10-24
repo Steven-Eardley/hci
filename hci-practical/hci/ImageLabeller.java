@@ -189,7 +189,7 @@ public class ImageLabeller extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 				try{
-					String url = "file:///afs/inf.ed.ac.uk/user/s09/s0901522/hci/hci-practical/help/help.html";
+					String url = "http://steven-eardley.github.com/hci/";
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
 				} catch (Exception b){
 					
