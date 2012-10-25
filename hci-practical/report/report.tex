@@ -8,7 +8,7 @@ functionally equivalent to.  There are therefore valuable lessons, both good and
 bad, to be learnt from how LabelMe has been implemented.
 
 With regards to good design practice we can see that LabelMe is compliant with
-Schneiderman's third, fourth, fifth and sixth golden rules.  The third rule
+Shneiderman's third, fourth, fifth and sixth golden rules.  The third rule
 because have a list of labels by the side allowing you to see what labels have
 been made, also from the good use of colour allowing you to easily see when a
 object has been completely marked out.  The fourth rule because the dialogue
@@ -19,19 +19,19 @@ fairly interlinked.  There is support for deleting an object, adjusting an
 object and undoing one's actions.  This gives us easy reversal of actions and
 support for error handling.
 
-LabelMe also obeys principles 1, 5, 7 and 10 of Neilson's usability heuristics. 
+LabelMe also obeys principles 1, 5, 7 and 10 of Nielsen's usability heuristics. 
 heuristic one is acheived by displaying the labels that have been added and by
 adding a transluscent layer over all marked objects allowing a user to tell at a
 glance what they have achieved.  Heuristic 5 is achieved in the same as way as
-Schneiderman's fifth golden rule.  Heuristic 7 is acheived by using icons which
+Shneiderman's fifth golden rule.  Heuristic 7 is acheived by using icons which
 are self explaniatory and by having a simple process to control the application,
  i.e. that you do not have to remember combinations of key presses to do
 anything. Heuristic 10 is acheived by having a clear help icon seen at all
 times, this ties in with 7 by using a question mark which is a universal
 standard for software help.
 
-However it is not all good as we have breaches of Schneiderman's first and
-second golden laws and Neilson's ninth heuristic.  The first golden law is
+However it is not all good as we have breaches of Shneiderman's first and
+second golden laws and Neilsen's ninth heuristic.  The first golden law is
 breached because the erase button is actually an undo button, this mislabelling
 could be prevented if (CITE DESIGN OF EVERYDAY THINGS DOOR HANDLES BIT) the text
 labels were removed leaving only the icons.  Although to keep consistent with
@@ -236,7 +236,11 @@ much improving the user experience. Highlighting the shape in this case could
 darken or lighten the colours.
 
 \subsubsection{Scaling}
-
+The software currently only handles images at 800 x 600 pixels in size;
+larger images that are loaded will only be partially visible, and smaller
+images are shunted to the top corner of the interface. Ideally the image would
+be resized to fit the window size - this would help appearance as well as
+usability.
 \subsection{The Ugly}
 \subsubsection{General Aesthetic}
 A fundamental part of HCI design is that interface be aesthetically pleasing and
