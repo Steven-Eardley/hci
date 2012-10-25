@@ -128,8 +128,8 @@ public class ImageLabeller extends JFrame {
 				xOut = objectReader.loadFile(imageName);
 				imagePanel.polygonsList = xOut.getObjects();
 				imagePanel.labelList = xOut.getLabels();
-				System.out.println(imagePanel.labelList);
 				imagePanel.drawLabels();
+				System.out.println("loaded");
 				JOptionPane.showMessageDialog(null, "Session loaded");
 			} else {
 				JOptionPane.showMessageDialog(null, "Nothing to load");

@@ -29,14 +29,15 @@ public class ReadObjects {
 			doc.getDocumentElement().normalize();
 			
 			NodeList nList = doc.getElementsByTagName("objectNodes");
+			System.out.println(Integer.toString(nList.getLength()));
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Element obj = (Element) nList.item(temp);
 				String labelText = obj.getAttribute("label");
 				labels.add(labelText);
-				System.out.println(labels);
 				nodes = new ArrayList<hci.utils.Point>();
-				NodeList nListTwo = doc.getElementsByTagName("nodePoint");
+				NodeList nListTwo = obj.getElementsByTagName("nodePoint");
+				System.out.println(Integer.toString(nListTwo.getLength()));
 				for (int tempNode = 0; tempNode < nListTwo.getLength(); tempNode++){
 					Node nNode = nListTwo.item(tempNode);
 					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
