@@ -170,9 +170,11 @@ When an item in the labels list is selected (by mouse or keyboard) the
 corresponding region on the image is highlighted in blue, matching the blue
 used in the list. This also occurs in reverse; selecting the polygon for label
 editing (by right-clicking the shape) also paints it blue in both locations.
-The consistency ensures intuitive behaviour.
+The consistency ensures intuitive behaviour and allows the user to get instant
+feedback on whether they have selected the correct shape/label.
 
 \subsection{The Bad}
+
 \subsubsection{Screen Flicker}
 Currently there is quite bad screen flicker from having the image redrawn.  This
 occurs when the window is moved partially offscreen or when dialogue boxes are
@@ -183,6 +185,7 @@ would be to perform double buffering; a process where the image is processed in
 one buffer and then put directly into another buffer to be displayed.  If we
 were to implement double buffering it would provide the user with a far smoother
 experience.
+
 \subsubsection{Label Dialogue Boxes}
 At the moment dialogue boxes relating to adding/editing of labels all are
 spawned at the same point: The centre of the user's monitor.  It would be much
@@ -190,10 +193,19 @@ more desirable to have them be more like tooltips appearing next to the marked
 area.  This would give the user more confirmation about what they are editing.
 
 \subsubsection{No Easy Way to Change Marked Objects}
+Currently once you have finished marking out an object if you decide you want to
+change it the only way to do this is by deleting the object and re-marking it.
+This is very awkward and it would be an area we looked into if we had more time.
+Allowing the user to add new nodes to an object would probably be infeasible, 
+but we could let the user click and drag existing nodes to alter the shape.  
+This would be a feature aimed more at advanced users as it would allow for a
+greater throughput when labelling images.  To the casual user it wouldn't matter
+as much we feel.
 
 \subsection{Improvements}
 The following are features that we identified as useful additions and would have
 liked to implement but ran out of time.
+
 \subsubsection{A gallery of pictures} 
 Having something like a bar along the bottom that displays all the images in the
 current directory.  This is good for the user as it means they do not have to
@@ -203,6 +215,7 @@ memory).  It also would add colour to the UI making it more attractive. If the
 goal of the program is to label images en masse, perhaps a simple arrow to
 navigate back and forward (as in an image preview application) would speed the
 process significantly.
+
 \subsubsection{A gallery of labels}
 Instead of just having a list of the text of labels that have been added to an
 image we would like the section of the image marked out for labelling to appear
@@ -214,11 +227,14 @@ of the picture with the icons, giving them a much smoother interaction with the
 system.  This could be combined with the gallery of pictures mentioned above and
 allowing the user to tab between the two views, this would help keep the
 application consistent.
+
 \subsubsection{Changing Colour of marked objects}
 Although the program can handle stacking shapes, it would be more useful to
 change the on-screen colour of each shape, and tying it to the label colour in
-the list. Highlighting the shape in this case could darken or lighten the
-colours.
+the list.  This would allow the stacked shapes to be far more easily distinguished,
+much improving the user experience. Highlighting the shape in this case could
+darken or lighten the colours.
+
 \subsubsection{Scaling}
 The software currently only handles images at 800 x 600 pixels in size;
 larger images that are loaded will only be partially visible, and smaller
@@ -230,6 +246,7 @@ usability.
 
 \section{Appendices}
 \appendix
+
 \section{Shneiderman’s 8 Golden Rules (1987)}
 \begin{enumerate}
 \item Strive for consistency
@@ -241,6 +258,7 @@ usability.
 \item Support internal locus of control
 \item Reduce short-term memory load 
 \end{enumerate}
+
 \section{Nielsen’s 10 Usability Heuristics (1994)}
 \begin{enumerate}
 \item Visibility of system status
