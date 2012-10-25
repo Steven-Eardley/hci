@@ -57,7 +57,8 @@ have assessed what works well, what doesn't and what is missing.
 
 \section{Formal Requirements}
 
-From analysing the mark scheme we were able to identify the following as required functionality:
+From analysing the mark scheme we were able to identify the following as
+required functionality:
 \begin{itemize}
 \item Allow annotation of different images
 \item Add, edit and delete labels
@@ -88,7 +89,7 @@ front-end with the addition of keyboard shortcuts for example.
 We feel that this was an effective design discipline that let us build up a
 solid product rather than focusing to heavily in one area.
 
-\subsection{Good}
+\subsection{The Good}
 
 \subsubsection{Saving and Loading}
 We made the decision that marked points and labels would be stored in an XML
@@ -154,11 +155,24 @@ application.
 
 \subsubsection{Keyboard Shortcuts}
 Keyboard shortcuts were identified as an essential component to improve
-experience once a user has reached a stage of familiarity with the task. These
-will be learnt during the investigative phase via tooltips that appear over the
-buttons.
+experience once a user has reached a stage of familiarity with the task, as per
+Schneiderman's second golden rule.  In L'Bl\"{u}r these are learnt during the
+investigative phase via tooltips that appear when hovering the mouse over the
+GUI buttons. Although the user requires the mouse to plot the polygons on the
+image, the keyboard can be used effectively and rapidly to fulfil the remaining
+application functions. Once the user has added points, pressing the right arrow
+on the keyboard will bring focus to the label list, allowing the user to edit or
+delete the polygon with the keyboard. Navigating up and down this list to change
+selection is achieved with the arrow keys.
 
-\subsection{Bad}
+\subsubsection{Visual Feedback}
+When an item in the labels list is selected (by mouse or keyboard) the
+corresponding region on the image is highlighted in blue, matching the blue
+used in the list. This also occurs in reverse; selecting the polygon for label
+editing (by right-clicking the shape) also paints it blue in both locations.
+The consistency ensures intuitive behaviour.
+
+\subsection{The Bad}
 \subsubsection{Screen Flicker}
 Currently there is quite bad screen flicker from having the image redrawn.  This
 occurs when the window is moved partially offscreen or when dialogue boxes are
@@ -176,10 +190,10 @@ more desirable to have them be more like tooltips appearing next to the marked
 area.  This would give the user more confirmation about what they are editing.
 
 \subsubsection{No Easy Way to Change Marked Objects}
-\subsubsection{General Aesthetic}
 
 \subsection{Improvements}
-Features that we would have liked to implement but ran out of time for are:
+The following are features that we identified as useful additions and would have
+liked to implement but ran out of time.
 \subsubsection{A gallery of pictures} 
 Having something like a bar along the bottom that displays all the images in the
 current directory.  This is good for the user as it means they do not have to
@@ -201,5 +215,39 @@ system.  This could be combined with the gallery of pictures mentioned above and
 allowing the user to tab between the two views, this would help keep the
 application consistent.
 \subsubsection{Changing Colour of marked objects}
+Although the program can handle stacking shapes, it would be more useful to
+change the on-screen colour of each shape, and tying it to the label colour in
+the list. Highlighting the shape in this case could darken or lighten the
+colours.
 \subsubsection{Scaling}
+
+\subsection{The Ugly}
+\subsubsection{General Aesthetic}
+
+\section{Appendices}
+\appendix
+\section{Shneiderman’s 8 Golden Rules (1987)}
+\begin{enumerate}
+\item Strive for consistency
+\item Enable frequent users to use shortcuts
+\item Offer informative feedback
+\item Design dialogs to yield closure
+\item Offer error prevention and simple error handling
+\item Permit easy reversal of actions
+\item Support internal locus of control
+\item Reduce short-term memory load 
+\end{enumerate}
+\section{Nielsen’s 10 Usability Heuristics (1994)}
+\begin{enumerate}
+\item Visibility of system status
+\item Match between system and the real world
+\item User control and freedom
+\item Consistency and standards
+\item Help users recognize, diagnose and recover from errors
+\item Error prevention
+\item Recognition rather than recall
+\item Flexibility and efficiency of use
+\item Aesthetic and minimalist design
+\item Help and documentation
+\end{enumerate}
 \end{document}
