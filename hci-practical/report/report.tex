@@ -39,24 +39,31 @@ We feel that this was an effective design discipline that let us build up a soli
 \subsubsection{Saving and Loading}
 We made the decision that marked points and labels would be stored in an XML file.  This is because XML is good for storing structured data which is what we have.  It also means it is in a semi standard format which would hopefully make it easier if any other labelling software wanted to be used, for example LabelMe which also has xml capability.  This is less a benefit to the user and more a benefit any researchers who want to access the data.
 
-Another decision we made was to not give the user much control over saving and loading.  When you save after doing some marking and labelling the xml file is created in the same directory as the image with the name \emph{imagefilename}.xml.  Then when you press load after opening a new image the relevant file is automatically loaded.
+Another decision we made was to not give the user much control over saving and loading.  When you save after doing some marking and labelling the xml file is created in the same directory as the image with the name \emph{imagefilename}.xml.  Then when you press load after opening a new image the relevant file is automatically loaded.  We chose to do this to simplify the process for the user, they have to deal with less menus and they don't have to remember where they saved the data.
 
-\subsubsection{Keyboard Shortcuts}
+The only downside is that the directories may start to become cluttered with .xml files.  Which has the potential to annoy some users.  We did consider making the xml files hidden.  This visually solves the clutter problem but makes it harder for any user without some command line knowledge to delete old label files.  For this reason we decided to keep them visible.
+
+Because the actual saving and loading happens behind the scenes it is important to inform the user that things have happened.  When a user saves their work a dialogue opens on completion informing them that the save has been successful.  When a user loads a file, if no file exists they are informed via a dialogue that there was nothing to load, otherwise nothing would happen and this could confuse them.  If there is a file then they are informed via a dialogue that the data was loaded successfully and there is added visual confirmation because marked objects and labels appear on screen.  Likewise when a new image is opened the change in image offers confirmation that it has worked.
+
 \subsubsection{Marking Objects}
 \subsubsection{Undo}
 \subsubsection{Icons}
+Icons are important in an application because they inform a user as to what will happen without having to read text.  We are using the gnome tango icon set in our application.  
 
 \subsection{Bad}
 \subsubsection{Screen Flicker}
+Currently there is quite bad screen flicker from having the image redrawn.  This occurs when the window is moved partially offscreen or when dialogue boxes are moved.  This is a very annoying thing to happen and really degrades the user experience.  So in a future version of the software we would definitely want to fix this.  We believe the way to fix this problem would be to perform double buffering.  This is a process where the image is processed in one buffer and then put directly into another buffer to be displayed.  If we were to implement double buffering it would provide the user with a far smoother experience.
 \subsubsection{Label Dialogue Boxes}
-\subsubsection{General Aesthetic}
 \subsubsection{No Easy Way to Change Marked Objects}
+\subsubsection{General Aesthetic}
 
 \subsection{Improvements}
 Features that we would have liked to implement but ran out of time for are:
-\begin{itemize}
-\item A gallery of pictures, something like a bar along the bottom that displays all the images in the current directory.  This is good for the user as it means they do not have to keep navigating the file dialogue when they want to start labelling a new image in the same directory (recognition not recall, and reduces load on short term memory).  It also would add colour to the UI making it more attractive.
-\item A gallery of labels, instead of just having a list of the text of labels that have been added to an image we would like the section of the image marked out for labelling to appear in a gallery as an icon for that label.  In cases where there are ambiguous labels, or many objects with the same/similar labels as rather than a user trying to remember which label corresponds to which object, or attempting trial and error to find the match, instead the user would just be able to match areas of the picture with the icons, giving them a much smoother interaction with the system.  This could be combined with the gallery of pictures mentioned above and allowing the user to tab between the two views, this would help keep the application consistent.
-\end{itemize}
+\subsubsection{A gallery of pictures} 
+Having something like a bar along the bottom that displays all the images in the current directory.  This is good for the user as it means they do not have to keep navigating the file dialogue when they want to start labelling a new image in the same directory (recognition not recall, and reduces load on short term memory).  It also would add colour to the UI making it more attractive.
+\subsubsection{A gallery of labels}
+Instead of just having a list of the text of labels that have been added to an image we would like the section of the image marked out for labelling to appear in a gallery as an icon for that label.  In cases where there are ambiguous labels, or many objects with the same/similar labels as rather than a user trying to remember which label corresponds to which object, or attempting trial and error to find the match, instead the user would just be able to match areas of the picture with the icons, giving them a much smoother interaction with the system.  This could be combined with the gallery of pictures mentioned above and allowing the user to tab between the two views, this would help keep the application consistent.
+\subsubsection{Keyboard Shortcuts}
+\subsubsection{Changing Colour of marked objects}
 
 \end{document}
