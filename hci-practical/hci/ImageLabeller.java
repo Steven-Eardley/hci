@@ -223,30 +223,30 @@ public class ImageLabeller extends JFrame {
         
 		JButton openFileButton = new JButton(openAction);
 		openFileButton.setIcon(image_icon);
-		openFileButton.setToolTipText("Open Image (Ctrl+o");
+		openFileButton.setToolTipText("Open Image (Ctrl+O)");
 		openFileButton.setEnabled(true);
 		toolboxPanel.add(openFileButton);
 		
 		JButton saveButton = new JButton(saveAction);
 		saveButton.setIcon(save_icon);
-		saveButton.setToolTipText("Save (Ctrl+s)");
+		saveButton.setToolTipText("Save (Ctrl+S)");
 		saveButton.setEnabled(true);
 		toolboxPanel.add(saveButton);
 		
 		JButton loadButton = new JButton(loadAction);
 		loadButton.setIcon(open_icon);
-		loadButton.setToolTipText("Load (Ctrl+l)");
+		loadButton.setToolTipText("Load (Ctrl+L)");
 		loadButton.setEnabled(true);
 		toolboxPanel.add(loadButton);
 		
 		JButton helpButton = new JButton(helpAction);
 		helpButton.setIcon(help_icon);
-		helpButton.setToolTipText("Help (Ctrl+h)");
+		helpButton.setToolTipText("Help (Ctrl+H)");
 		helpButton.setEnabled(true);
 		
 		JButton editButton = new JButton(editAction);
 		editButton.setIcon(edit_icon);
-		editButton.setToolTipText("Edit Label (Ctrl+e)");
+		editButton.setToolTipText("Edit Label (Ctrl+E)");
 		
 		JButton deleteButton = new JButton(deleteAction);
 		deleteButton.setIcon(delete_icon);
@@ -289,7 +289,7 @@ public class ImageLabeller extends JFrame {
 		
 		KeyStroke key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.KeyEvent.CTRL_MASK);
         inputMap.put(key, "open");
-        actionMap.put("save", openAction);
+        actionMap.put("open", openAction);
         
         key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.KeyEvent.CTRL_MASK);
         inputMap.put(key, "save");
