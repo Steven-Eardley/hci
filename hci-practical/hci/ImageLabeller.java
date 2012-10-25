@@ -171,6 +171,13 @@ public class ImageLabeller extends JFrame {
 		}
 	};
 	
+	@SuppressWarnings("serial")
+	public Action undoAction = new AbstractAction() {
+		public void actionPerformed(ActionEvent e) {
+			imagePanel.undoLine();
+		}
+	};
+	
 	public void setupGUI(String imageFilename) throws Exception {
 		//setup main window panel
 		bigassPanel = new JPanel();
@@ -307,5 +314,9 @@ public class ImageLabeller extends JFrame {
         key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_RIGHT, 0);
         inputMap.put(key, "rightNav");
         actionMap.put("rightNav", navAction);
+        
+        key = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.KeyEvent.CTRL_MASK);
+        inputMap.put(key, "undo");
+        actionMap.put("undo", undoAction);
 	}
 }

@@ -195,6 +195,16 @@ public class ImagePanel extends JPanel implements MouseListener {
 	}
 	
 	/**
+	 * Removes the last stroke of the current unfinished polygon
+	 */
+	public void undoLine(){
+		if (currentPolygon.size() > 0){
+			currentPolygon.remove(currentPolygon.size() - 1);
+			refresh();
+		}
+	}
+	
+	/**
 	 * displays last stroke of the polygon (arch between the last and first vertices)
 	 * @param polygon to be finished
 	 */
@@ -306,10 +316,7 @@ public class ImagePanel extends JPanel implements MouseListener {
 				}
 			}
 			// right-click while drawing to remove lines
-			if (currentPolygon.size() > 0){
-				currentPolygon.remove(currentPolygon.size() - 1);
-				refresh();
-			}
+			undoLine();
 		}
 	}
 

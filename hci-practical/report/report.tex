@@ -3,9 +3,21 @@
 \begin{document}
 
 \section{LabelMe}
-LabelMe is the product offered by MIT that our system is intended to be functionally equivalent to.  There are therefore valuable lessons, both good and bad, to be learnt from how LabelMe has been implemented.
+LabelMe is the product offered by MIT that our system is intended to be
+functionally equivalent to.  There are therefore valuable lessons, both good and
+bad, to be learnt from how LabelMe has been implemented.
 
-With regards to good design practice we can see that LabelMe is compliant with Schneiderman's third, fourth, fifth and sixth golden rules.  The third rule because have a list of labels by the side allowing you to see what labels have been made, also from the good use of colour allowing you to easily see when a object has been completely marked out.  The fourth rule because the dialogue boxes that appear have a clear x in the top right corner which is consistent with user's expectations, also any of the three options done, adjust and delete close the dialogue.  The fifth and sixth of Schneiderman's rules we see as fairly interlinked.  There is support for deleting an object, adjusting an object and undoing one's actions.  This gives us easy reversal of actions and support for error handling.
+With regards to good design practice we can see that LabelMe is compliant with
+Schneiderman's third, fourth, fifth and sixth golden rules.  The third rule
+because have a list of labels by the side allowing you to see what labels have
+been made, also from the good use of colour allowing you to easily see when a
+object has been completely marked out.  The fourth rule because the dialogue
+boxes that appear have a clear x in the top right corner which is consistent
+with user's expectations, also any of the three options done, adjust and delete
+close the dialogue.  The fifth and sixth of Schneiderman's rules we see as
+fairly interlinked.  There is support for deleting an object, adjusting an
+object and undoing one's actions.  This gives us easy reversal of actions and
+support for error handling.
 
 LabelMe also obeys principles 1, 5, 7 and 10 of Neilson's usability heuristics. 
 heuristic one is acheived by displaying the labels that have been added and by
@@ -18,11 +30,30 @@ anything. Heuristic 10 is acheived by having a clear help icon seen at all
 times, this ties in with 7 by using a question mark which is a universal
 standard for software help.
 
-However it is not all good as we have breaches of Schneiderman's first and second golden laws and Neilson's ninth heuristic.  The first golden law is breached because the erase button is actually an undo button, this mislabelling could be prevented if (CITE DESIGN OF EVERYDAY THINGS DOOR HANDLES BIT) the text labels were removed leaving only the icons.  Although to keep consistent with the rest of the operating system a back arrow would be more useful, but the eraser is consistent with application's aesthetic.  This leads us onto the breach of Neilson's 9th heuristic, although the system is minimalist, it is definitely not aesthetically pleasing: elements of the UI appear unconnected, icons are unevenly spaced and iconsistent in design with the erase button not having a red outline, and on a more subjective level we do not like the cartoony style of its design.  Shneiderman's second law is breached by there not being any short cuts for power users, these could include undo.
+However it is not all good as we have breaches of Schneiderman's first and
+second golden laws and Neilson's ninth heuristic.  The first golden law is
+breached because the erase button is actually an undo button, this mislabelling
+could be prevented if (CITE DESIGN OF EVERYDAY THINGS DOOR HANDLES BIT) the text
+labels were removed leaving only the icons.  Although to keep consistent with
+the rest of the operating system a back arrow would be more useful, but the
+eraser is consistent with application's aesthetic.  This leads us onto the
+breach of Neilson's 9th heuristic, although the system is minimalist, it is
+definitely not aesthetically pleasing: elements of the UI appear unconnected,
+icons are unevenly spaced and iconsistent in design with the erase button not
+having a red outline, and on a more subjective level we do not like the cartoony
+style of its design.  Shneiderman's second law is breached by there not being
+any short cuts for power users, these could include undo.
 
-In terms of learnability, flexibility and robustness labelme is fairly good.  It appears to be easy for new users to get to grips with learning the tool, and can be labelling images very quickly.  Users can see their progress and easily determine when they have successfully labelled an image.  Flexibility wise labelme is not very flexible but it does not need to be.
+In terms of learnability, flexibility and robustness labelme is fairly good. 
+It appears to be easy for new users to get to grips with learning the tool, and
+can be labelling images very quickly.  Users can see their progress and easily
+determine when they have successfully labelled an image.  Flexibility wise
+labelme is not very flexible but it does not need to be.
 
-Ultimately labelme is perfectly functional and easy to use, although it could be improved in a few areas.  Its biggest problem is that it isn't pretty.  This gives a good starting point for the development of our own image labeller, we have assessed what works well, what doesn't and what is missing.
+Ultimately labelme is perfectly functional and easy to use, although it could be
+improved in a few areas.  Its biggest problem is that it isn't pretty.  This
+gives a good starting point for the development of our own image labeller, we
+have assessed what works well, what doesn't and what is missing.
 
 \section{Formal Requirements}
 
@@ -34,14 +65,28 @@ From analysing the mark scheme we were able to identify the following as require
 \item The above need to be easy to perform
 \item Everything should follow HCI principles
 \end{itemize}
-The functional aspects of these requirements are not difficult to implement so the challenge, and where we spent most of our time, was to fulfill the softer requirements by making them easy to use and follow the principles.
+The functional aspects of these requirements are not difficult to implement so
+the challenge, and where we spent most of our time, was to fulfill the softer
+requirements by making them easy to use and follow the principles.
 
 \section{L'Bl\"{u}r}
 
 \subsection{Design and Process}
-Our design process was to iteratively build backend functionality and then make it accessible through the frontend.  And throughout the whole process we would fix bugs and tweak the UI.  To start with we implmented opening new images, adding labels and saving and loading.  We then added ways to access this functionality i.e. buttons.  We then started adding more functionality such as adding and deleting labels.  During this we refined the previous functionality and the user interface, so we fixed bugs that would attempt to load non existant files causing the program to crash, and we made it more user friendly by features like shading in marked areas and adding in right click menus.  This cycle continued, we started to see less backend functionality be added in the cycles and spent more time bug fixing it, but more and more coming into the front-end with the addition of keyboard shortcuts for example.
+Our design process was to iteratively build backend functionality and then make
+it accessible through the frontend.  And throughout the whole process we would
+fix bugs and tweak the UI.  To start with we implmented opening new images,
+adding labels and saving and loading.  We then added ways to access this
+functionality i.e. buttons.  We then started adding more functionality such as
+adding and deleting labels.  During this we refined the previous functionality
+and the user interface, so we fixed bugs that would attempt to load non existant
+files causing the program to crash, and we made it more user friendly by
+features like shading in marked areas and adding in right click menus.  This
+cycle continued, we started to see less backend functionality be added in the
+cycles and spent more time bug fixing it, but more and more coming into the
+front-end with the addition of keyboard shortcuts for example.
 
-We feel that this was an effective design discipline that let us build up a solid product rather than focusing to heavily in one area.
+We feel that this was an effective design discipline that let us build up a
+solid product rather than focusing to heavily in one area.
 
 \subsection{Good}
 
@@ -62,7 +107,11 @@ the relevant file is automatically loaded.  We chose to do this to simplify the
 process for the user, they have to deal with fewer menus and they don't have to
 remember where they saved the data.
 
-The only downside is that the directories may start to become cluttered with .xml files.  Which has the potential to annoy some users.  We did consider making the xml files hidden.  This visually solves the clutter problem but makes it harder for any user without some command line knowledge to delete old label files.  For this reason we decided to keep them visible.
+The only downside is that the directories may start to become cluttered with
+.xml files.  Which has the potential to annoy some users.  We did consider
+making the xml files hidden.  This visually solves the clutter problem but
+makes it harder for any user without some command line knowledge to delete old
+label files.  For this reason we decided to keep them visible.
 
 Because the actual saving and loading happens behind the scenes it is important
 to inform the user that things have happened.  When a user saves their work a
@@ -105,7 +154,9 @@ application.
 
 \subsubsection{Keyboard Shortcuts}
 Keyboard shortcuts were identified as an essential component to improve
-experience once a user has reached a stage of familiarity with the task.
+experience once a user has reached a stage of familiarity with the task. These
+will be learnt during the investigative phase via tooltips that appear over the
+buttons.
 
 \subsection{Bad}
 \subsubsection{Screen Flicker}
