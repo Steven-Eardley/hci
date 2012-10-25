@@ -75,7 +75,23 @@ labels appearing on screen. Likewise when a new image is opened the change in
 image offers confirmation that it has worked.
 
 \subsubsection{Marking Objects}
+In the example code provided if you wanted to complete the marking of an image
+you had to press a button on the GUI.  This was clunky and very unintuitive.  It
+makes far more sense that to complete the marking you just click on the original
+node to finish it.  So this is what we implemented.
+
 \subsubsection{Undo}
+An undo feature is a fundamental aspect of almost all applications in which
+a user interacts with.  It allows them to fix any mistakes they might make.  We
+have our undo which is able to undo back to the last completed object.  It would
+be nice to allow the user to undo back to the start, but unfortunately this is
+not possible at the moment it would definitely be something we would look into 
+including if we had more time.  You can however delete completed objects, 
+allowing you to go back to having a clean slate if you want.  The undo method
+is called with a right mouse click keeping it consistent with applications like
+MSPaint.  It also means that control is kept simple and a user does not need
+to locate something on the GUI, or take their hand off the mouse.
+
 \subsubsection{Icons}
 Icons are important in an application because they inform a user as to what will
 happen without having to read text.  We are using the gnome tango icon set in
@@ -127,5 +143,5 @@ system.  This could be combined with the gallery of pictures mentioned above and
 allowing the user to tab between the two views, this would help keep the
 application consistent.
 \subsubsection{Changing Colour of marked objects}
-
+\subsubsection{Scaling}
 \end{document}
