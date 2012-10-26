@@ -1,5 +1,7 @@
 \documentclass[a4paper,11pt,oneside]{article}
 
+\usepackage{graphicx}
+
 \begin{document}
 
 \title{L'Bl\"{u}r: an Alternative to LabelMe in the World of Image Labelling Software}
@@ -79,10 +81,11 @@ requirements by making them easy to use and follow the principles.
 GOMS
 
 \section{L'Bl\"{u}r}
-A PICTURE OF THE FINISHED PRODUCT
+
+\includegraphics[width=\textwidth]{final.png}
+This is the finished product.
 
 \subsection{Design and Process}
-PICTURES DEMONSTRATING AND EXPLAINING A BIT MORE
 Our design process was to iteratively build backend functionality and then make
 it accessible through the frontend.  And throughout the whole process we would
 fix bugs and tweak the UI.  To start with we implmented opening new images,
@@ -98,6 +101,54 @@ front-end with the addition of keyboard shortcuts for example.
 
 We feel that this was an effective design discipline that let us build up a
 solid product rather than focusing to heavily in one area.
+
+
+\includegraphics[width=\textwidth]{old1.png}
+
+Our first version just added the ability to load new images.
+
+\includegraphics[width=\textwidth]{old2.png}
+
+We then added saving and loading.
+
+\includegraphics[width=\textwidth]{old3.png}
+
+The buttons were starting to look very ugly by the side.  So we moved them to
+be below the image.
+
+\includegraphics[width=\textwidth]{old4.png}
+
+We then made it so you clicked on the initial node to finish a shape, so we
+removed the new object button.
+
+\includegraphics[width=\textwidth]{old5.png}
+
+Then we added a label bar on the side which displayed each label as a JLabel.
+
+\includegraphics[width=\textwidth]{old6.png}
+
+This was not the nicest way of displaying labels so we switched to using a list
+box.
+
+\includegraphics[width=\textwidth]{old7.png}
+
+Then we added editing and deleting.
+
+\includegraphics[width=\textwidth]{old8.png}
+
+We then made it so the selected object is highlighted blue.
+
+\includegraphics[width=\textwidth]{old9.png}
+
+We then switched to using icons.
+
+\includegraphics[width=\textwidth]{old10.png}
+
+Then we put all the buttons together which made the UI look much nicer.
+
+\includegraphics[width=\textwidth]{old11.png}
+
+Finally we made the icons transparent.
 
 \subsection{The Good}
 
