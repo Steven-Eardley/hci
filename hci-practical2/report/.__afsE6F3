@@ -1,7 +1,6 @@
 \documentclass[a4paper,11pt,oneside]{article}
 
 \usepackage{graphicx}
-\usepackage{multirow}
 
 \begin{document}
 
@@ -25,72 +24,31 @@ It took the subject 8min51s to complete the set of tasks.
 
 Our observations noticed that throughout the tasks the user was asking questions on what to do and how to do it, they had to refer to the help guide multiple times, including for the same task: how to go into edit mode.  The subjet also started to display rage, at one point swearing at the computer.  They attempted to apply external knowledge in the form of keyboard shortcuts.  They were also appeared frustrated when pressing buttons that had no feedback indicating success or failure.  When the subject was required to move the shape to a new lamppost they tried to move the whole shape in one, not move it point by point.
 
-\begin{table}[h]
-\label{tab:a1}
+\begin{table}
 \centering
-\caption{Subject A, Software 1}
 
-\vspace{10px}
-\begin{tabular}{ p{7cm} | c | c | c | c | c | c | c | }
-    \cline{2-8}
-     & \multicolumn{3}{|l}{No} & \multicolumn{1}{c}{ } & \multicolumn{3}{r|}{Yes} \\
-    \cline{2-8}
-      & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to mark an object?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to edit a label?} & & & & & x & & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to delete an object?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to save your work?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to load previous work?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to open a new image?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you find the appearance appealing?} & & & & x & & & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you have a positive experience?} & & & & & x & & \\
-    \hline
-\end{tabular} 
 \end{table}
+
+\begin{tabular}{p{7cm}|c|c|c|c|c|c|c|}
+\cline{3-6}
+& & \multicolumn{4}{c|}{Primes} \\ \cline{3-6}
+& & 2 & 3 & 5 & 7 \\ \cline{1-6}
+\multicolumn{1}{|c}{\multirow{2}{*}{Powers}} &
+\multicolumn{1}{|c|}{504} & 3 & 2 & 0 & 1 &     \\ \cline{2-6}
+\multicolumn{1}{|c}{}                        &
+\multicolumn{1}{|c|}{540} & 2 & 3 & 1 & 0 &     \\ \cline{1-6}
+\multicolumn{1}{|c}{\multirow{2}{*}{Powers}} &
+\multicolumn{1}{|c|}{gcd} & 2 & 2 & 0 & 0 &  \\ \cline{2-6}
+\multicolumn{1}{|c}{}                        &
+\multicolumn{1}{|c|}{lcm} & 3 & 3 & 1 & 1 &  \\ \cline{1-6}
+\end{tabular}
 
 \subsubsection{Software 2}
 It took the subject 5min20s to complete the set of tasks.
 
 Our observations noticed that the icons on the button seemed to help the user work out what to do, and the textual tooltips shown when the mouse was hovered over a button aided the user to confirm the use until the function was remembered.  The subject coped fairly well with this software until it came to editing and deleting.  We had to explain to the subject that to move a marking it had to be deleted and redrawn.  Attempting to edit again induced a rage with the subject swearing at the computer.  The user had to be prompted to click in the label box on the right hand side to select object ready to be marked or deleted.  They did only need to be prompted on this the first time. The subject did not find the left-click shortcut to undo drawing, which caused some confusion throughout the tasks.
 
-\begin{table}[h]
-\label{tab:a2}
-\centering
-\caption{Subject A, Software 2}
-
-\vspace{10px}
-\begin{tabular}{ p{7cm} | c | c | c | c | c | c | c | }
-    \cline{2-8}
-     & \multicolumn{3}{|l}{No} & \multicolumn{1}{c}{ } & \multicolumn{3}{r|}{Yes} \\
-    \cline{2-8}
-      & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to mark an object?} & & & & & &  & x \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to edit a label?} & & & & &  & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to delete an object?} & & & x & & &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to save your work?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to load previous work?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to open a new image?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you find the appearance appealing?} & & & &  & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you have a positive experience?} & & & & &  & x & \\
-    \hline
-\end{tabular} 
-\end{table}
+SURVEY RESULTS
 
 \subsection{Subject B}
 \subsubsection{Software 1}
@@ -98,72 +56,14 @@ It took the subject 8min29s to complete the set of tasks.
 
 Our observations noticed that straight away the subject struggled with opening an image, this software displayed all files, not just image files which confused the subject.  Also when the subject needed to use the help guide it was described as "too wordy".  The subject also struggled with moving the markings, attempting to move without being in the correct mode.  Switching modes had to be prompted to them, and they had to be prompted every time the mode needed to be switched.
 
-\begin{table}[h]
-\label{tab:b1}
-\centering
-\caption{Subject B, Software 1}
-
-\vspace{10px}
-\begin{tabular}{ p{7cm} | c | c | c | c | c | c | c | }
-    \cline{2-8}
-     & \multicolumn{3}{|l}{No} & \multicolumn{1}{c}{ } & \multicolumn{3}{r|}{Yes} \\
-    \cline{2-8}
-      & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to mark an object?} & & & & x & &  &  \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to edit a label?} & & & x & &  &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to delete an object?} & & &  & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to save your work?} & & & & & x &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to load previous work?} & & & & x & &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to open a new image?} & & & & & & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you find the appearance appealing?} & & & x &  & &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you have a positive experience?} & & & x & &  &  & \\
-    \hline
-\end{tabular} 
-\end{table}
+SURVEY RESULTS
 
 \subsubsection{Software 2}
 It took the subject 6min56s to complete the set of tasks.
 
 Our observations noticed that again using the listbox needed to be more prominent as we had to prompt the subject to use that to allow editing and deleting.  Again we had to explain that moving required deleting and redrawing.  The subject did discover one of our keyboard shortcuts: ctrl-z for undo.  They then proceeded to use this throughout the task.
 
-\begin{table}[h]
-\label{tab:b2}
-\centering
-\caption{Subject B, Software 2}
-
-\vspace{10px}
-\begin{tabular}{ p{7cm} | c | c | c | c | c | c | c | }
-    \cline{2-8}
-     & \multicolumn{3}{|l}{No} & \multicolumn{1}{c}{ } & \multicolumn{3}{r|}{Yes} \\
-    \cline{2-8}
-      & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to mark an object?} & & & & & & x &  \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to edit a label?} & & & & &  & x & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to delete an object?} & & &  & & &  & x \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to save your work?} & & & & & x &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to load previous work?} & & & & x & &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Was it easy to open a new image?} & & & & & x &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you find the appearance appealing?} & & & &  & x &  & \\
-    \hline
-    \multicolumn{1}{|l|}{Did you have a positive experience?} & & & & &  & x & \\
-    \hline
-\end{tabular} 
-\end{table}
+SURVEY RESULTS
 
 \subsection{Findings}
 Both subjects said both pieces of software made them feel stupid.  Which inidicates that both pieces of software failed at being user friendly.
