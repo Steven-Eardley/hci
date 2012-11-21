@@ -73,6 +73,25 @@ The remaining rules, 5 and 7, are maintained in incidentally by the application:
 
 To improve compliance with Shneiderman's Golden Rules, reducing the steps to edit a finished polygon would be required; perhaps clicking and dragging a vertex when in the editing mode should initiate the action, removing the need for a specific (and currently misleadingly labelled) button. The 'Toggle Mode' button could be renamed to show the current mode, e.g. 'Switch to edit mode' when drawing and 'Return to draw mode' when editing. This would improve feedback and reduce cognitive load. To improve adherence with Rule 4, it would be helpful for the labelling interface to open first, with the open image dialogue appearing by clicking prompt in the centre of the image region. This would give the user an indication of what the program expects (an image path), and why they are doing it (there is no image to tag). An undo function could be added to comply with rule 6, with a key shortcut and a button below 'Finish current label'.
 
+\section{Interface Improvements}
+Through practical and theoretical analysis of the software we have identified the following areas to be addressed:
+\begin{enumerate}
+\item{Click on original node to finish marking}
+\item{Show the main program along with file chooser on startup}
+\item{Stop prompting saying unsaved changes when there were no changes}
+\item{Add undo functionality}
+\item{Rename toggle mode button to edit mode}
+\item{Reorder the edit process so you click the button then the shape}
+\item{Simplify the documentation}
+\item{Give user feedback even when the action does nothing}
+\item{Move shapes as a whole not point by point}
+\item{Filter by filetypes}
+\item{Make prettier in general}
+\item{Make it more accessible}
+\end{enumerate}
+
+Items 1, 6, 4 and 9 became apparant in the user testing, they were the actions that the users tried to perform with no knowledge of the system, so by implementing them new users should be able to use the system more effectively.  Items 2, 3, 5, 8 and 10 were sections that led to the users being confused, so by fixing these issues the users will be able to more effectively use the software.  Item 7 will make it easier for a user to work out what to do if something goes wrong, it will also make it easier for somebody with reading difficulties to fix problems, which is item 12.  For item 11 a simple way to solve this is to not use the default swing theme, an issue relating to this that neither user mentioned is that the label text is drawn onto the image in a bright green colour, making it near impossible to read.  Either the colour should be changed, or the labels should have an appropriate flat background colour.
+
 \newpage
 \section{Appendix}
 \appendix
