@@ -1,0 +1,49 @@
+Open an image
+1: Start program -> navigate open file dialogue
+2: Start program -> click 'Open
+Mark an object
+1: Click polygon points -> move to controls -> click 'Finish current label'
+   Click polygon points -> press Alt + n
+2:
+Add the label
+1: Type label text -> move to label box -> click 'OK'
+   Type label text -> press Enter key
+2:
+Edit the label
+1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon -> move to controls -> click 'Rename' -> type label text -> move to label box -> click 'OK'
+   Press Alt + t -> click polygon -> press Alt + r -> type label text -> press Enter key
+2:
+Mark another object
+1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon points -> move to controls -> click 'Finish current label' -> type label text -> move to label box -> click 'OK'
+   Press Alt + t -> click polygon points -> press Alt + n -> type label text -> press Enter key
+2:
+Save
+1: Move to controls -> click 'Save image tags' -> navigate save file dialogue
+   Press Alt + s -> navigate save file dialogue
+2:
+Open another image
+1: move to controls -> click 'Open' -> navigate open file dialogue
+   Press Alt + o -> navigate open file dialogue
+2:
+Mark a lamppost
+1: Click polygon points -> move to controls -> click 'Finish current label' -> type label text -> move to label box -> click 'OK'
+   click polygon points -> press Alt + n -> type label text -> press Enter key
+2:
+Move these markings to a different lamppost
+1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon -> move to controls -> click 'Start editing' -> move to image -> drag points -> move to controls -> click 'Stop editing'
+   Press Alt + t -> click polygon -> press Alt + e -> drag points -> press Alt + e
+2:
+Open up the original image
+1: move to controls -> click 'Open' -> navigate open file dialogue
+   Press Alt + o -> navigate open file dialogue
+2:
+Load the data
+1: move to controls -> click 'Load image tags' -> navigate open file dialogue
+   Press Alt + o -> navigate open file dialogue
+2:
+Delete an object
+1:
+2:
+Close the program
+1:
+2:
