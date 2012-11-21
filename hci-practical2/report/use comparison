@@ -1,49 +1,102 @@
+An operation entails moving the mouse to a different region on the screen, clicking the mouse, or pressing a key shortcut. For clarity repeated actions of uncertain length (such as numerous clicks to form a polygon or navigating the open file dialogue) are counted as one in the evaluation.
+
 Open an image
 1: Start program -> navigate open file dialogue
-2: Start program -> click 'Open
+   2
+2: Start program -> click 'Open image' -> navigate open file dialogue
+   Start program -> press Ctrl + o -> navigate open file dialogue
+   3
+
 Mark an object
 1: Click polygon points -> move to controls -> click 'Finish current label'
    Click polygon points -> press Alt + n
-2:
+   max 3 min 2
+2: Click polygon points (final point completes)
+   1
+
 Add the label
 1: Type label text -> move to label box -> click 'OK'
    Type label text -> press Enter key
-2:
+   max 3 min 2
+2: Type label text -> move to label box -> click 'OK'
+   Type label text -> press Enter key
+   max 3 min 2
+   
 Edit the label
 1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon -> move to controls -> click 'Rename' -> type label text -> move to label box -> click 'OK'
    Press Alt + t -> click polygon -> press Alt + r -> type label text -> press Enter key
-2:
+   max 9 min 5
+2: Move to label list -> click label -> move to controls -> click 'Edit Label' -> type label text -> move to label box -> click 'OK'
+   Right-click polygon -> type label text -> press Enter key
+   max 7 min 3
+
 Mark another object
 1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon points -> move to controls -> click 'Finish current label' -> type label text -> move to label box -> click 'OK'
    Press Alt + t -> click polygon points -> press Alt + n -> type label text -> press Enter key
-2:
+   max 9 min 5
+2: Move to image -> click polygon points -> type label text -> move to label box -> click 'OK'
+   Move to image -> click polygon points -> type label text -> press Enter key
+   max 5 min 4
+
 Save
 1: Move to controls -> click 'Save image tags' -> navigate save file dialogue
    Press Alt + s -> navigate save file dialogue
-2:
+   max 3 min 2
+2: Move to controls -> click 'Save' -> move to message dialogue -> click 'OK' to dismiss -> navigate save file dialogue
+   Press Ctrl + s -> press Enter to dismiss message dialogue -> navigate save file dialogue
+   max 5 min 3
+
 Open another image
-1: move to controls -> click 'Open' -> navigate open file dialogue
+1: Move to controls -> click 'Open' -> navigate open file dialogue
    Press Alt + o -> navigate open file dialogue
-2:
+   max 3 min 2
+2: Click 'Open image' -> navigate open file dialogue
+   Press Ctrl + o -> navigate open file dialogue
+   2
+
 Mark a lamppost
 1: Click polygon points -> move to controls -> click 'Finish current label' -> type label text -> move to label box -> click 'OK'
    click polygon points -> press Alt + n -> type label text -> press Enter key
-2:
+   max 6 min 4
+2: Move to image -> click polygon points -> type label text -> move to label box -> click 'OK'
+   Move to image -> click polygon points -> type label text -> press Enter key
+   max 5 min 4
+
 Move these markings to a different lamppost
 1: Move to controls -> click 'Toggle mode' -> move to image -> click polygon -> move to controls -> click 'Start editing' -> move to image -> drag points -> move to controls -> click 'Stop editing'
    Press Alt + t -> click polygon -> press Alt + e -> drag points -> press Alt + e
-2:
+   max 10 min 5
+2: Move to label list -> click label -> move to controls -> click 'Delete Shape' -> move to image -> click polygon points -> type label text -> move to label box -> click 'OK'
+   Press Right-Arrow key -> press Up-Arrow or Down-Arrow to select -> press Del key -> click polygon points -> type label text -> press Enter key
+   max 9 min 5
+
 Open up the original image
-1: move to controls -> click 'Open' -> navigate open file dialogue
+1: Move to controls -> click 'Open' -> navigate open file dialogue
    Press Alt + o -> navigate open file dialogue
-2:
+   max 3 min 2
+2: Click 'Open image' -> move to message dialogue -> click 'OK' to dismiss -> navigate open file dialogue
+   Press Ctrl + o -> press Enter to dismiss message dialogue -> navigate open file dialogue
+   max 4 min 3
+
 Load the data
-1: move to controls -> click 'Load image tags' -> navigate open file dialogue
-   Press Alt + o -> navigate open file dialogue
-2:
+1: Move to controls -> click 'Load image tags' -> move to message dialogue -> click 'OK' to dismiss -> navigate open file dialogue
+   Press Alt + l -> press Enter to dismiss message dialogue -> navigate open file dialogue
+   maz 5 min 3
+2: Move to controls -> click 'Load' -> move to message dialogue -> click 'OK' to dismiss
+   Press Ctrl + l -> press Enter to dismiss message dialogue
+   max 4 min 2
+
 Delete an object
-1:
-2:
+1: move to image -> click polygon -> move to controls -> click 'Delete'
+   move to image -> click polygon -> press Alt + d
+   max 4 min 3
+2: Move to label list -> click label -> move to controls -> click 'Delete Shape'
+   Press Right-Arrow key -> press Up-Arrow or Down-Arrow to select -> press Del key
+   max 4 min 3
+
 Close the program
-1:
-2:
+1: move to top of window -> click x button
+   2
+2: move to top of window -> click x button -> move to prompt dialogue -> click 'No' to dismiss
+   move to top of window -> click x button -> press Alt + n to dismiss prompt dialogue
+   max 4 min 3
