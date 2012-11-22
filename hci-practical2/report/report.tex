@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{mathtools}
 
 \begin{document}
 
@@ -76,18 +77,18 @@ To improve compliance with Shneiderman's Golden Rules, reducing the steps to edi
 \section{Interface Improvements}
 Through practical and theoretical analysis of the software we have identified the following areas to be addressed:
 \begin{enumerate}
-\item{Click on original node to finish marking}
-\item{Show the main program along with file chooser on startup}
-\item{Stop prompting saying unsaved changes when there were no changes}
-\item{Add undo functionality}
-\item{Rename toggle mode button to edit mode}
-\item{Reorder the edit process so you click the button then the shape}
-\item{Simplify the documentation}
-\item{Give user feedback even when the action does nothing}
-\item{Move shapes as a whole not point by point}
-\item{Filter by filetypes}
-\item{Make prettier in general}
-\item{Make it more accessible}
+    \item{Click on original node to finish marking}
+    \item{Show the main program along with file chooser on startup}
+    \item{Stop prompting saying unsaved changes when there were no changes}
+    \item{Add undo functionality}
+    \item{Rename toggle mode button to edit mode}
+    \item{Reorder the edit process so you click the button then the shape}
+    \item{Simplify the documentation}
+    \item{Give user feedback even when the action does nothing}
+    \item{Move shapes as a whole not point by point}
+    \item{Filter by filetypes}
+    \item{Make prettier in general}
+    \item{Make it more accessible}
 \end{enumerate}
 
 Items 1, 6, 4 and 9 became apparant in the user testing, they were the actions that the users tried to perform with no knowledge of the system, so by implementing them new users should be able to use the system more effectively.  Items 2, 3, 5, 8 and 10 were sections that led to the users being confused, so by fixing these issues the users will be able to more effectively use the software.  Item 7 will make it easier for a user to work out what to do if something goes wrong, it will also make it easier for somebody with reading difficulties to fix problems, which is item 12.  For item 11 a simple way to solve this is to not use the default swing theme, an issue relating to this that neither user mentioned is that the label text is drawn onto the image in a bright green colour, making it near impossible to read.  Either the colour should be changed, or the labels should have an appropriate flat background colour.
@@ -100,19 +101,19 @@ Items 1, 6, 4 and 9 became apparant in the user testing, they were the actions t
 \label{sec:tasks}
 
 \begin{enumerate}
-\item Open an image
-\item Mark an object
-\item Add the label
-\item Edit the label
-\item Mark another object
-\item Save
-\item Open another image
-\item Mark a lamppost
-\item Move these markings to a different lamppost
-\item Open up the original image
-\item Load the data
-\item Delete an object
-\item Close the program
+    \item Open an image
+    \item Mark an object
+    \item Add the label
+    \item Edit the label
+    \item Mark another object
+    \item Save
+    \item Open another image
+    \item Mark a lamppost
+    \item Move these markings to a different lamppost
+    \item Open up the original image
+    \item Load the data
+    \item Delete an object
+    \item Close the program
 \end{enumerate}
 
 We instructed the user to use a directory which contained two images, both with multiple lampposts in so that the tasks could be acheived no matter which image was chosen first by the subject.
@@ -120,35 +121,35 @@ We instructed the user to use a directory which contained two images, both with 
 \section{Shneiderman’s 8 Golden Rules (1987)}
 \label{sec:s_rules}
 \begin{enumerate}
-\item Strive for consistency
-\item Enable frequent users to use shortcuts
-\item Offer informative feedback
-\item Design dialogs to yield closure
-\item Offer error prevention and simple error handling
-\item Permit easy reversal of actions
-\item Support internal locus of control
-\item Reduce short-term memory load 
+    \item Strive for consistency
+    \item Enable frequent users to use shortcuts
+    \item Offer informative feedback
+    \item Design dialogs to yield closure
+    \item Offer error prevention and simple error handling
+    \item Permit easy reversal of actions
+    \item Support internal locus of control
+    \item Reduce short-term memory load 
 \end{enumerate}
 
 \section{Nielsen’s 10 Usability Heuristics (1994)}
 \label{sec:n_rules}
 \begin{enumerate}
-\item Visibility of system status
-\item Match between system and the real world
-\item User control and freedom
-\item Consistency and standards
-\item Help users recognize, diagnose and recover from errors
-\item Error prevention
-\item Recognition rather than recall
-\item Flexibility and efficiency of use
-\item Aesthetic and minimalist design
-\item Help and documentation
+    \item Visibility of system status
+    \item Match between system and the real world
+    \item User control and freedom
+    \item Consistency and standards
+    \item Help users recognize, diagnose and recover from errors
+    \item Error prevention
+    \item Recognition rather than recall
+    \item Flexibility and efficiency of use
+    \item Aesthetic and minimalist design
+    \item Help and documentation
 \end{enumerate}
 
 \section{Survey Results}
 \label{sec:survey}
 
-\begin{table}[h]
+\begin{table}[h!]
 
 \centering
 \caption{Subject A, Software 1}
@@ -180,7 +181,7 @@ We instructed the user to use a directory which contained two images, both with 
 \label{tab:a1}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \caption{Subject A, Software 2}
 
@@ -211,7 +212,7 @@ We instructed the user to use a directory which contained two images, both with 
 \label{tab:a2}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[h!]
 
 \centering
 \caption{Subject B, Software 1}
@@ -243,7 +244,7 @@ We instructed the user to use a directory which contained two images, both with 
 \label{tab:b1}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[h!]
 
 \centering
 \caption{Subject B, Software 2}
@@ -275,5 +276,214 @@ We instructed the user to use a directory which contained two images, both with 
 \label{tab:b2}
 \end{table}
 
+\section{Task Breakdown}
+\label{sec:task_breakdown}
+
+An operation entails moving the mouse to a different region on the screen, clicking the mouse, or pressing a key shortcut. For clarity repeated actions of uncertain length (such as numerous clicks to form a polygon or navigating the open file dialogue) are counted as one in the evaluation. Where there are alternative methods for acheiving a task, the maximum and minimum length routes are shown.\\
+
+{\bf Open an image}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Start program $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: 2
+    \item
+    \begin{enumerate}
+        \item Start program $\rightarrow$ click 'Open image' $\rightarrow$ navigate open file dialogue
+        \item Start program $\rightarrow$ press Ctrl + o $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: 3
+\end{enumerate}
+
+{\bf Mark an object}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Click polygon points $\rightarrow$ move to controls $\rightarrow$ click 'Finish current label'
+        \item Click polygon points $\rightarrow$ press Alt + n
+    \end{enumerate}
+    Operations: max 3 min 2
+    \item
+    \begin{enumerate}
+        \item Click polygon points (final point completes)
+    \end{enumerate}
+    Operations: 1
+\end{enumerate}
+
+{\bf Add the label}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 3 min 2
+    \item
+    \begin{enumerate}
+        \item Type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 3 min 2
+\end{enumerate}
+
+{\bf Edit the label}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Rename' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Press Alt + t $\rightarrow$ click polygon $\rightarrow$ press Alt + r $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 9 min 5
+    \item
+    \begin{enumerate}
+        \item Move to label list $\rightarrow$ click label $\rightarrow$ move to controls $\rightarrow$ click 'Edit Label' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Right-click polygon $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 7 min 3
+\end{enumerate}
+
+{\bf Mark another object}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon points $\rightarrow$ move to controls $\rightarrow$ click 'Finish current label' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Press Alt + t $\rightarrow$ click polygon points $\rightarrow$ press Alt + n $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 9 min 5
+    \item
+    \begin{enumerate}
+        \item Move to image $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Move to image $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 5 min 4
+\end{enumerate}
+
+{\bf Save}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Save image tags' $\rightarrow$ navigate save file dialogue
+        \item Press Alt + s $\rightarrow$ navigate save file dialogue
+    \end{enumerate}
+    Operations: max 3 min 2
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Save' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate save file dialogue
+        \item Press Ctrl + s $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate save file dialogue
+    \end{enumerate}
+    Operations: max 5 min 3
+\end{enumerate}
+
+{\bf Open another image}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Open' $\rightarrow$ navigate open file dialogue
+        \item Press Alt + o $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: max 3 min 2
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ Click 'Open image' $\rightarrow$ navigate open file dialogue
+        \item Press Ctrl + o $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: max 3 min 2
+\end{enumerate}
+
+{\bf Mark a lamppost}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Click polygon points $\rightarrow$ move to controls $\rightarrow$ click 'Finish current label' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item click polygon points $\rightarrow$ press Alt + n $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 6 min 4
+    \item
+    \begin{enumerate}
+        \item Move to image $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Move to image $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 5 min 4
+\end{enumerate}
+
+{\bf Move these markings to a different lamppost}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Start editing' $\rightarrow$ move to image $\rightarrow$ drag points $\rightarrow$ move to controls $\rightarrow$ click 'Stop editing'
+        \item Press Alt + t $\rightarrow$ click polygon $\rightarrow$ press Alt + e $\rightarrow$ drag points $\rightarrow$ press Alt + e
+    \end{enumerate}
+    Operations: max 10 min 5
+    \item
+    \begin{enumerate}
+        \item Move to label list $\rightarrow$ click label $\rightarrow$ move to controls $\rightarrow$ click 'Delete Shape' $\rightarrow$ move to image $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
+        \item Press Right-Arrow key $\rightarrow$ press Up-Arrow or Down-Arrow to select $\rightarrow$ press Del key $\rightarrow$ click polygon points $\rightarrow$ type label text $\rightarrow$ press Enter key
+    \end{enumerate}
+    Operations: max 9 min 5
+\end{enumerate}
+
+{\bf Open up the original image}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Open' $\rightarrow$ navigate open file dialogue
+        \item Press Alt + o $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: max 3 min 2
+    \item
+    \begin{enumerate}
+        \item Click 'Open image' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate open file dialogue
+        \item Press Ctrl + o $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: max 4 min 3
+\end{enumerate}
+
+{\bf Load the data}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Load image tags' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate open file dialogue
+        \item Press Alt + l $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
+    \end{enumerate}
+    Operations: max 5 min 3
+    \item
+    \begin{enumerate}
+        \item Move to controls $\rightarrow$ click 'Load' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss
+        \item Press Ctrl + l $\rightarrow$ press Enter to dismiss message dialogue
+    \end{enumerate}
+    Operations: max 4 min 2
+\end{enumerate}
+
+{\bf Delete an object}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Delete'
+        \item move to image $\rightarrow$ click polygon $\rightarrow$ press Alt + d
+    \end{enumerate}
+    Operations: max 4 min 3
+    \item
+    \begin{enumerate}
+        \item Move to label list $\rightarrow$ click label $\rightarrow$ move to controls $\rightarrow$ click 'Delete Shape'
+        \item Press Right-Arrow key $\rightarrow$ press Up-Arrow or Down-Arrow to select $\rightarrow$ press Del key
+    \end{enumerate}
+    Operations: max 4 min 3
+\end{enumerate}
+
+{\bf Close the program}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item move to top of window $\rightarrow$ click x button
+    \end{enumerate}
+    Operations: 2
+    \item
+    \begin{enumerate}
+        \item move to top of window $\rightarrow$ click x button $\rightarrow$ move to prompt dialogue $\rightarrow$ click 'No' to dismiss
+        \item move to top of window $\rightarrow$ click x button $\rightarrow$ press Alt + n to dismiss prompt dialogue
+    \end{enumerate}
+    Operations: max 4 min 3
+\end{enumerate}
 
 \end{document}

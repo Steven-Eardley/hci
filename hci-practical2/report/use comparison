@@ -50,9 +50,9 @@ Open another image
 1: Move to controls -> click 'Open' -> navigate open file dialogue
    Press Alt + o -> navigate open file dialogue
    max 3 min 2
-2: Click 'Open image' -> navigate open file dialogue
+2: Move to controls -> Click 'Open image' -> navigate open file dialogue
    Press Ctrl + o -> navigate open file dialogue
-   2
+   max 3 min 2
 
 Mark a lamppost
 1: Click polygon points -> move to controls -> click 'Finish current label' -> type label text -> move to label box -> click 'OK'
