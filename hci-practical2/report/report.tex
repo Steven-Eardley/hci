@@ -22,14 +22,14 @@ Software 1 is the software given to us to evaluate and software 2 is our softwar
 \subsection{Subject A}
 
 \subsubsection{Software 1}
-It took the subject 8min51s to complete the set of tasks. 
+It took the subject 8 minutes and 51 seconds to complete the set of tasks. 
 
 Our observations noticed that throughout the tasks the user was asking questions on what to do and how to do it, they had to refer to the help guide multiple times, including for the same task: how to go into edit mode.  The subjet also started to display frustration, at one point swearing at the computer.  They attempted to apply external knowledge in the form of keyboard shortcuts.  They were also appeared frustrated when pressing buttons that had no feedback indicating success or failure.  When the subject was required to move the shape to a new lamppost they tried to move the whole shape in one, not move it point by point.
 
 The survey (Appendix~\ref{sec:survey}, Table~\ref{tab:a1}) taken at the end indicates in general that they thought the software was good, the only area that really needs improvement would be the appearance.
 
 \subsubsection{Software 2}
-It took the subject 5min20s to complete the set of tasks.
+It took the subject 5 minutes and 20 seconds to complete the set of tasks.
 
 Our observations noticed that the icons on the button seemed to help the user work out what to do, and the textual tooltips shown when the mouse was hovered over a button aided the user to confirm the use until the function was remembered.  The subject coped fairly well with this software until it came to editing and deleting.  We had to explain to the subject that to move a marking it had to be deleted and redrawn.  Attempting to edit again induced a rage with the subject swearing at the computer.  The user had to be prompted to click in the label box on the right hand side to select object ready to be marked or deleted.  They did only need to be prompted on this the first time. The subject did not find the right-click shortcut to undo drawing, which caused some confusion throughout the tasks.
 
@@ -37,7 +37,7 @@ The survey (Appendix~\ref{sec:survey}, Table~\ref{tab:a2}) taken at the end indi
 
 \subsection{Subject B}
 \subsubsection{Software 1}
-It took the subject 8min29s to complete the set of tasks.
+It took the subject 8 minutes and 29 seconds to complete the set of tasks.
 
 Our observations noticed that straight away the subject struggled with opening an image, this software displayed all files, not just image files which confused the subject.  Also when the subject needed to use the help guide it was described as "too wordy".  The subject also struggled with moving the markings, attempting to move without being in the correct mode.  Switching modes had to be prompted to them, and they had to be prompted every time the mode needed to be switched.
 
@@ -45,7 +45,7 @@ The survey (Appendix~\ref{sec:survey}, Table~\ref{tab:b1}) taken at the end indi
 
 
 \subsubsection{Software 2}
-It took the subject 6min56s to complete the set of tasks.
+It took the subject 6 minutes and 56 seconds to complete the set of tasks.
 
 Our observations noticed that again using the listbox needed to be more prominent as we had to prompt the subject to use that to allow editing and deleting.  Again we had to explain that moving required deleting and redrawing.  The subject did discover one of our keyboard shortcuts: ctrl-z for undo.  They then proceeded to use this throughout the task.
 
@@ -62,17 +62,21 @@ For software 1 anything relating to editing caused a lot of problems for the use
 
 A more detailed analysis of the areas for improvements in software 2, including survey results and observations, shows that: the documentation, toggling of modes, provide feedback from interactions, moving the shape as a whole not point by point, filtering of files and a general improvement in aesthetic are the todo points for the software.
 
-Whilst we cannot be 100\% sure, due to the way the experiment was run, it was in software 2 that the tasks were completed faster.  Our observations of the subjects noticed less problems with software 2 than software 1.  The survey results themselves also indicate a slight preference for software 2 with both users having a more positive experience with software 2.  However as both pieces of software made them feel stupid we know that both need serious improvement.
+Whilst we cannot be 100\% sure, due to the way the experiment was run, it was in software 2 that the tasks were completed faster.  Our observations of the subjects noticed less problems with software 2 than software 1.  The survey results themselves also indicate a slight preference for software 2 with both users having a more positive experience with software 2. However, as both pieces of software made them feel stupid we know that both need serious improvement.
 
 \section{Evaluation and Comparison}
 
 The software we were given to evaluate does not adhere particularly well to Shneiderman's 8 Golden Rules (Appendix~\ref{sec:s_rules}), with breaches of rules 1, 3, 4, 6 and 8. Rule 1 is breached by the operations requiring numerous switches of focus between the image window and the button panel. For example, to edit a complete polygon the user ir required to click the 'Toggle mode' button, select a polygon in the image, click the 'Start editing' button, manipulate the polyon points within the image, and finally click the 'Stop editing' button. This sequence of actions is significantly longer and different to each of the other avaiable in the program. For Rule 3, feedback is a problem because when the mode has been changed via the 'Toggle mode' button there is no indication of what each mode is for. The user is expected to know which mode they are in by the options available - the 'greying out' of the 'Finish current label' button is helpful but does not redeem this enough. The breach of Rule 4 occurs when we first open the application; the user is immediately confronted by a standard open file dialogue, but no indication that the tagger itself is running. This can be a little disconcerting. Additionally, whenever the load tags button is clicked the user is prompted that current changes will be lost, even if there aren't any unsaved changes in the space, or indeed any polygons at all. This needlessly interrupts user flow. The program also doesn't include an 'undo' functionality, so breaks Rule 6. Because of this, to cancel a point drawn in error, an entire polygon must be created, labelled and deleted. Rule 8 is not met because changing mode adds needless cognitive load: remembering which mode the program is in, and the sequence of actions to change it. As discussed above, it was found to cause test subjects some difficulty.
 
-The evaluation program does conform well with rule 2: shortcuts exist in the standard menu fashion, i.e. pressing the 'alt' key with the underlined letter performs that button click. This is an effective way of speeding up the process.
+The evaluation program does conform well with rule 2: shortcuts exist in the standard menu fashion, i.e. pressing the 'Alt' key with the underlined letter performs that button click. This is an effective way of speeding up the process.
 
 The remaining rules, 5 and 7, are maintained in incidentally by the application: the task is such that there is little scope for serious error, and the user has full control of the program with no time-sensitive operations.
 
 To improve compliance with Shneiderman's Golden Rules, reducing the steps to edit a finished polygon would be required; perhaps clicking and dragging a vertex when in the editing mode should initiate the action, removing the need for a specific (and currently misleadingly labelled) button. The 'Toggle Mode' button could be renamed to show the current mode, e.g. 'Switch to edit mode' when drawing and 'Return to draw mode' when editing. This would improve feedback and reduce cognitive load. To improve adherence with Rule 4, it would be helpful for the labelling interface to open first, with the open image dialogue appearing by clicking prompt in the centre of the image region. This would give the user an indication of what the program expects (an image path), and why they are doing it (there is no image to tag). An undo function could be added to comply with rule 6, with a key shortcut and a button below 'Finish current label'.
+
+Through an exploration (Appendix~\ref{sec:task_breakdown}) of best-case sequences of actions required to complete each of our tasks, we find that the evaluation software is more difficult to use when compared to the system we presented for part 1. Common repetitive actions such as sequentially labelling a selection of shapes require more time and cognitive load, since attention has to be transferred between the image region and the controls on the right hand side. In our software the flow is uninterrupted as a user can complete a shape, type a label and continue drawing polygons without changing their focus.
+
+In total we find that the user is required to make at least 41 actions, 69 without key shortcuts, to complete the tasks using software 1, compared to 38
 
 \section{Interface Improvements}
 Through practical and theoretical analysis of the software we have identified the following areas to be addressed:
@@ -149,6 +153,8 @@ We instructed the user to use a directory which contained two images, both with 
 \section{Task Breakdown}
 \label{sec:task_breakdown}
 
+Below we decompose the user tasks into the direct sequence of operations required in each program. As before, software 1 is the software given to us to evaluate and software 2 is our software we developed in part one.
+
 An operation entails moving the mouse to a different region on the screen, clicking the mouse, or pressing a key shortcut. For clarity repeated actions of uncertain length (such as numerous clicks to form a polygon or navigating the open file dialogue) are counted as one in the evaluation. Where there are alternative methods for acheiving a task, the maximum and minimum length routes are shown.\\
 
 {\bf Open an image}
@@ -161,7 +167,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Start program $\rightarrow$ click 'Open image' $\rightarrow$ navigate open file dialogue
-        \item Start program $\rightarrow$ press Ctrl + o $\rightarrow$ navigate open file dialogue
+        \item Start program $\rightarrow$ press Ctrl+o $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: 3
 \end{enumerate}
@@ -171,7 +177,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Click polygon points $\rightarrow$ move to controls $\rightarrow$ click 'Finish current label'
-        \item Click polygon points $\rightarrow$ press Alt + n
+        \item Click polygon points $\rightarrow$ press Alt+n
     \end{enumerate}
     Operations: max 3 min 2
     \item
@@ -202,7 +208,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Rename' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
-        \item Press Alt + t $\rightarrow$ click polygon $\rightarrow$ press Alt + r $\rightarrow$ type label text $\rightarrow$ press Enter key
+        \item Press Alt+t $\rightarrow$ click polygon $\rightarrow$ press Alt+r $\rightarrow$ type label text $\rightarrow$ press Enter key
     \end{enumerate}
     Operations: max 9 min 5
     \item
@@ -218,7 +224,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon points $\rightarrow$ move to controls $\rightarrow$ click 'Finish current label' $\rightarrow$ type label text $\rightarrow$ move to label box $\rightarrow$ click 'OK'
-        \item Press Alt + t $\rightarrow$ click polygon points $\rightarrow$ press Alt + n $\rightarrow$ type label text $\rightarrow$ press Enter key
+        \item Press Alt+t $\rightarrow$ click polygon points $\rightarrow$ press Alt+n $\rightarrow$ type label text $\rightarrow$ press Enter key
     \end{enumerate}
     Operations: max 9 min 5
     \item
@@ -234,13 +240,13 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Save image tags' $\rightarrow$ navigate save file dialogue
-        \item Press Alt + s $\rightarrow$ navigate save file dialogue
+        \item Press Alt+s $\rightarrow$ navigate save file dialogue
     \end{enumerate}
     Operations: max 3 min 2
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Save' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate save file dialogue
-        \item Press Ctrl + s $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate save file dialogue
+        \item Press Ctrl+s $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate save file dialogue
     \end{enumerate}
     Operations: max 5 min 3
 \end{enumerate}
@@ -250,13 +256,13 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Open' $\rightarrow$ navigate open file dialogue
-        \item Press Alt + o $\rightarrow$ navigate open file dialogue
+        \item Press Alt+o $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: max 3 min 2
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ Click 'Open image' $\rightarrow$ navigate open file dialogue
-        \item Press Ctrl + o $\rightarrow$ navigate open file dialogue
+        \item Press Ctrl+o $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: max 3 min 2
 \end{enumerate}
@@ -282,7 +288,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Toggle mode' $\rightarrow$ move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Start editing' $\rightarrow$ move to image $\rightarrow$ drag points $\rightarrow$ move to controls $\rightarrow$ click 'Stop editing'
-        \item Press Alt + t $\rightarrow$ click polygon $\rightarrow$ press Alt + e $\rightarrow$ drag points $\rightarrow$ press Alt + e
+        \item Press Alt+t $\rightarrow$ click polygon $\rightarrow$ press Alt+e $\rightarrow$ drag points $\rightarrow$ press Alt+e
     \end{enumerate}
     Operations: max 10 min 5
     \item
@@ -298,13 +304,13 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Open' $\rightarrow$ navigate open file dialogue
-        \item Press Alt + o $\rightarrow$ navigate open file dialogue
+        \item Press Alt+o $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: max 3 min 2
     \item
     \begin{enumerate}
         \item Click 'Open image' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate open file dialogue
-        \item Press Ctrl + o $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
+        \item Press Ctrl+o $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: max 4 min 3
 \end{enumerate}
@@ -314,13 +320,13 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Load image tags' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss $\rightarrow$ navigate open file dialogue
-        \item Press Alt + l $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
+        \item Press Alt+l $\rightarrow$ press Enter to dismiss message dialogue $\rightarrow$ navigate open file dialogue
     \end{enumerate}
     Operations: max 5 min 3
     \item
     \begin{enumerate}
         \item Move to controls $\rightarrow$ click 'Load' $\rightarrow$ move to message dialogue $\rightarrow$ click 'OK' to dismiss
-        \item Press Ctrl + l $\rightarrow$ press Enter to dismiss message dialogue
+        \item Press Ctrl+l $\rightarrow$ press Enter to dismiss message dialogue
     \end{enumerate}
     Operations: max 4 min 2
 \end{enumerate}
@@ -330,7 +336,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item move to image $\rightarrow$ click polygon $\rightarrow$ move to controls $\rightarrow$ click 'Delete'
-        \item move to image $\rightarrow$ click polygon $\rightarrow$ press Alt + d
+        \item move to image $\rightarrow$ click polygon $\rightarrow$ press Alt+d
     \end{enumerate}
     Operations: max 4 min 3
     \item
@@ -351,7 +357,7 @@ An operation entails moving the mouse to a different region on the screen, click
     \item
     \begin{enumerate}
         \item move to top of window $\rightarrow$ click x button $\rightarrow$ move to prompt dialogue $\rightarrow$ click 'No' to dismiss
-        \item move to top of window $\rightarrow$ click x button $\rightarrow$ press Alt + n to dismiss prompt dialogue
+        \item move to top of window $\rightarrow$ click x button $\rightarrow$ press Alt+n to dismiss prompt dialogue
     \end{enumerate}
     Operations: max 4 min 3
 \end{enumerate}
@@ -485,7 +491,5 @@ An operation entails moving the mouse to a different region on the screen, click
 \end{tabular} 
 \label{tab:b2}
 \end{table}
-
-
 
 \end{document}
