@@ -66,9 +66,17 @@ Whilst we cannot be 100\% sure, due to the way the experiment was run, it was in
 
 \section{Evaluation and Comparison}
 
-The software we were given to evaluate does not adhere particularly well to Shneiderman's 8 Golden Rules (Appendix~\ref{sec:s_rules}), with breaches of rules 1, 3, 4, 6 and 8. Rule 1 is breached by the operations requiring numerous switches of focus between the image window and the button panel. For example, to edit a complete polygon the user ir required to click the 'Toggle mode' button, select a polygon in the image, click the 'Start editing' button, manipulate the polyon points within the image, and finally click the 'Stop editing' button. This sequence of actions is significantly longer and different to each of the other avaiable in the program. For Rule 3, feedback is a problem because when the mode has been changed via the 'Toggle mode' button there is no indication of what each mode is for. The user is expected to know which mode they are in by the options available - the 'greying out' of the 'Finish current label' button is helpful but does not redeem this enough. The breach of Rule 4 occurs when we first open the application; the user is immediately confronted by a standard open file dialogue, but no indication that the tagger itself is running. This can be a little disconcerting. Additionally, whenever the load tags button is clicked the user is prompted that current changes will be lost, even if there aren't any unsaved changes in the space, or indeed any polygons at all. This needlessly interrupts user flow. The program also doesn't include an 'undo' functionality, so breaks Rule 6. Because of this, to cancel a point drawn in error, an entire polygon must be created, labelled and deleted. Rule 8 is not met because changing mode adds needless cognitive load: remembering which mode the program is in, and the sequence of actions to change it. As discussed above, it was found to cause test subjects some difficulty.
+The software we were given to evaluate does not adhere particularly well to Shneiderman's 8 Golden Rules (Appendix~\ref{sec:s_rules}), with breaches of rules 1, 3, 4, 6 and 8. 
 
-The evaluation program does conform well with rule 2: shortcuts exist in the standard menu fashion, i.e. pressing the 'Alt' key with the underlined letter performs that button click. This is an effective way of speeding up the process.
+Rule 1 is breached by the operations requiring numerous switches of focus between the image window and the button panel. For example, to edit a complete polygon the user is required to click the 'Toggle mode' button, select a polygon in the image, click the 'Start editing' button, manipulate the polyon points within the image, and finally click the 'Stop editing' button. This sequence of actions is significantly longer and different to each of the other avaiable in the program. In comparison, software 2 allow the user to complete a shape by clicking the first point again, keeping the focus on the image region.
+
+For Rule 3, feedback is a problem because when the mode has been changed via the 'Toggle mode' button there is no indication of what each mode is for. The user is expected to know which mode they are in by the options available - the 'greying out' of the 'Finish current label' button is helpful but does not redeem this enough. Software 2 has greater feedback when drawing shapes: when a shape is completed the area is shaded, and polygons placed on top of each other appear different shades so can be identified, rather than just the outline being visible.
+
+The breach of Rule 4 occurs when we first open the application; the user is immediately confronted by a standard open file dialogue, but no indication that the tagger itself is running. This can be a little disconcerting. Additionally, whenever the load tags button is clicked the user is prompted that current changes will be lost, even if there aren't any unsaved changes in the space, or indeed any polygons at all. This needlessly interrupts user flow. Our system was deliberately designed to only show dialogues when required: when there are unsaved changes, or when a user action requires reassurance that the operation has been carried out. 
+
+The program also doesn't include an 'undo' functionality, so breaks Rule 6. Because of this, to cancel a point drawn in error, an entire polygon must be created, labelled and deleted. Rule 8 is not met because changing mode adds needless cognitive load: remembering which mode the program is in, and the sequence of actions to change it. As discussed above, it was found to cause test subjects some difficulty.
+
+The evaluation program does conform well with rule 2: shortcuts exist in the standard menu fashion, i.e. pressing the 'Alt' key with the underlined letter performs that button click. This is an effective way of speeding up the process, and something we ensured we included in the software we presented.
 
 The remaining rules, 5 and 7, are maintained in incidentally by the application: the task is such that there is little scope for serious error, and the user has full control of the program with no time-sensitive operations.
 
@@ -76,7 +84,7 @@ To improve compliance with Shneiderman's Golden Rules, reducing the steps to edi
 
 Through an exploration (Appendix~\ref{sec:task_breakdown}) of best-case sequences of actions required to complete each of our tasks, we find that the evaluation software is more difficult to use when compared to the system we presented for part 1. Common repetitive actions such as sequentially labelling a selection of shapes require more time and cognitive load, since attention has to be transferred between the image region and the controls on the right hand side. In our software the flow is uninterrupted as a user can complete a shape, type a label and continue drawing polygons without changing their focus.
 
-In total we find that the user is required to make at least 41 actions, 69 without key shortcuts, to complete the tasks using software 1, compared to 38
+In total we find that the user is required to make at least 41 actions, 69 without key shortcuts, to complete the tasks using software 1, compared to 38 and 57 with software 2. Of note is the use of informative dialogues our system, software 2, which improve feedback while the system still remains below software 1's operation count. However, there are tasks in which software 1 is easier to use than software 2; to move a label to a different region in the image in software 1 the functionality exists to move the points, whereas in software 2 the user is required to delete and redraw the label. This results in significantly more operations when the redrawing is taken into account. Software 2 also struggled where users did not learn the methods for achieving actions such as undo (a right-click), while software 1 provided available controls visually on the interface as buttons.
 
 \section{Interface Improvements}
 Through practical and theoretical analysis of the software we have identified the following areas to be addressed:
@@ -133,21 +141,6 @@ We instructed the user to use a directory which contained two images, both with 
     \item Permit easy reversal of actions
     \item Support internal locus of control
     \item Reduce short-term memory load 
-\end{enumerate}
-
-\section{Nielsen’s 10 Usability Heuristics (1994)}
-\label{sec:n_rules}
-\begin{enumerate}
-    \item Visibility of system status
-    \item Match between system and the real world
-    \item User control and freedom
-    \item Consistency and standards
-    \item Help users recognize, diagnose and recover from errors
-    \item Error prevention
-    \item Recognition rather than recall
-    \item Flexibility and efficiency of use
-    \item Aesthetic and minimalist design
-    \item Help and documentation
 \end{enumerate}
 
 \section{Task Breakdown}
